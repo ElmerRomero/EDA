@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Keyword Autocomplete with Dynamic Trie Visualization</title>
+    <style>
+        :root {
+            --primary-color: #0366d6;
+            --background-color: #f6f8fa;
+            --text-color: #24292e;
+            --border-color: #e1e4e8;
+            --hover-color: #f1f8ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .left-panel {
+            width: 60%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .right-panel {
+            width: 35%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .autocomplete-container {
+            position: relative;
+        }
+
+        #search {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        #search:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.3);
+        }
+
+        .suggestions {
+            margin-top: 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+
+        .suggestions li {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .suggestions li:hover {
+            background-color: var(--hover-color);
+        }
+
+        .suggestions li:not(:last-child) {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        #selected-keyword {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--background-color);
+            border-radius: 4px;
+            display: none;
+        }
+
+        #keyword-info {
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        #trie-visualization {
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.4;
+            background-color: #f6f8fa;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #e1e4e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-panel">
+            <h1>C++ Keyword Autocomplete</h1>
+            <div class="autocomplete-container">
+                <input type="text" id="search" placeholder="Type a C++ keyword...">
+                <ul id="suggestions" class="suggestions"></ul>
+            </div>
+            <div id="selected-keyword">
+                <h3>Selected Keyword: <span id="keyword"></span></h3>
+                <p id="keyword-info"></p>
+            </div>
+        </div>
+        <div class="right-panel">
+            <h2>Dynamic Trie Visualization</h2>
+            <div id="trie-visualization"></div>
+        </div>
+    </div>
+
+    <script>
+        class TrieNode {
+            constructor() {
+                this.children = {};
+                this.isEndOfWord = false;
+                this.info = '';
+            }
+        }
+
+        class Trie {
+            constructor() {
+                this.root = new TrieNode();
+            }
+
+            insert(word, info) {
+                let node = this.root;
+                for (let char of word) {
+                    if (!node.children[char]) {
+                        node.children[char] = new TrieNode();
+                    }
+                    node = node.children[char];
+                }
+                node.isEndOfWord = true;
+                node.info = info;
+            }
+
+            search(word) {
+                let node = this.root;
+                for (let char of word) {
+                    if (!node.children[char]) {
+                        return null;
+                    }
+                    node = node.children[char];
+                }
+                return node.isEndOfWord ? node : null;
+            }
+
+            wordsWithPrefix(prefix) {
+                let node = this.root;
+                for (let char of prefix) {
+                    if (!node.children[char]) {
+                        return [];
+                    }
+                    node = node.children[char];
+                }
+                return this._collectAllWords(node, prefix);
+            }
+
+            _collectAllWords(node, prefix) {
+                let words = [];
+                if (node.isEndOfWord) {
+                    words.push({ word: prefix, info: node.info });
+                }
+                for (let char in node.children) {
+                    words.push(...this._collectAllWords(node.children[char], prefix + char));
+                }
+                return words;
+            }
+
+            visualize(prefix = '', highlightedWords = []) {
+                return this._visualizeNode(this.root, '', '', true, prefix, highlightedWords);
+            }
+
+            _visualizeNode(node, currentPrefix, indent, isLast, searchPrefix, highlightedWords) {
+                let result = indent;
+                if (currentPrefix) {
+                    const isHighlighted = highlightedWords.includes(currentPrefix) ? '* ' : '  ';
+                    result += (isLast ? '└─ ' : '├─ ') + currentPrefix + (node.isEndOfWord ? isHighlighted : '  ') + '\n';
+                }
+
+                if (searchPrefix && !currentPrefix.startsWith(searchPrefix) && !searchPrefix.startsWith(currentPrefix)) {
+                    return result;
+                }
+
+                const childKeys = Object.keys(node.children).sort();
+                childKeys.forEach((key, index) => {
+                    const child = node.children[key];
+                    const newPrefix = currentPrefix + key;
+                    const newIndent = indent + (isLast ? '   ' : '│  ');
+                    result += this._visualizeNode(child, newPrefix, newIndent, index === childKeys.length - 1, searchPrefix, highlightedWords);
+                });
+
+                return result;
+            }
+        }
+
+        const trie = new Trie();
+        const cppKeywords = [
+            { word: "alignas", info: "Especifica el alineamiento de memoria para un tipo." },
+            { word: "alignof", info: "Devuelve el requisito de alineamiento de un tipo." },
+            { word: "and", info: "Operador lógico AND (equivalente a &&)." },
+            { word: "and_eq", info: "Operador de asignación compuesta AND (equivalente a &=)." },
+            { word: "asm", info: "Inserta código ensamblador en línea." },
+            { word: "atomic_cancel", info: "Cancelación de transacción atómica." },
+            { word: "atomic_commit", info: "Compromiso de transacción atómica." },
+            { word: "atomic_noexcept", info: "Transacción atómica sin excepción." },
+            { word: "auto", info: "Deducción automática de tipo para variables." },
+            { word: "bitand", info: "Operador bitwise AND (equivalente a &)." },
+            { word: "bitor", info: "Operador bitwise OR (equivalente a |)." },
+            { word: "bool", info: "Tipo booleano, puede ser true o false." },
+            { word: "break", info: "Termina la ejecución del bucle o switch más cercano." },
+            { word: "case", info: "Etiqueta en una declaración switch." },
+            { word: "catch", info: "Captura excepciones lanzadas por bloques try." },
+            { word: "char", info: "Tipo de carácter." },
+            { word: "char8_t", info: "Tipo de carácter UTF-8." },
+            { word: "char16_t", info: "Tipo de carácter UTF-16." },
+            { word: "char32_t", info: "Tipo de carácter UTF-32." },
+            { word: "class", info: "Declara una clase." },
+            { word: "compl", info: "Operador de complemento a uno (equivalente a ~)." },
+            { word: "concept", info: "Define un concepto para plantillas." },
+            { word: "const", info: "Declara que el valor de una variable no puede ser modificado." },
+            { word: "consteval", info: "Especifica que una función debe ser evaluada en tiempo de compilación." },
+            { word: "constexpr", info: "Permite que el valor de una función o variable sea evaluado en tiempo de compilación." },
+            { word: "const_cast", info: "Convierte entre tipos ignorando la cualificación const." },
+            { word: "continue", info: "Salta a la siguiente iteración del bucle." },
+            { word: "co_await", info: "Suspende la ejecución de una coroutine hasta que un awaitable esté listo." },
+            { word: "co_return", info: "Retorna un valor desde una coroutine." },
+            { word: "co_yield", info: "Suspende la ejecución de una coroutine y proporciona un valor." },
+            { word: "decltype", info: "Obtiene el tipo de una expresión." },
+            { word: "default", info: "Etiqueta predeterminada en una declaración switch o especificador de función predeterminada." },
+            { word: "delete", info: "Libera memoria asignada dinámicamente o prohíbe el uso de una función." },
+            { word: "do", info: "Inicia un bucle do-while." },
+            { word: "double", info: "Tipo de punto flotante de doble precisión." },
+            { word: "dynamic_cast", info: "Convierte entre tipos polimórficos." },
+            { word: "else", info: "Rama alternativa en una declaración if-else." },
+            { word: "enum", info: "Declara un tipo de enumeración." },
+            { word: "explicit", info: "Especifica que un constructor no puede ser usado para conversiones implícitas." },
+            { word: "export", info: "Declara que una plantilla será definida en otro lugar." },
+            { word: "extern", info: "Declara que una variable o función está definida en otro lugar." },
+            { word: "false", info: "Valor booleano falso." },
+            { word: "float", info: "Tipo de punto flotante de precisión simple." },
+            { word: "for", info: "Inicia un bucle for." },
+            { word: "friend", info: "Declara una función o clase con acceso a miembros privados de otra clase." },
+            { word: "goto", info: "Transfiere el control a una etiqueta nombrada." },
+            { word: "if", info: "Inicia una declaración condicional." },
+            { word: "inline", info: "Sugiere al compilador que expanda la función en el lugar de la llamada." },
+            { word: "int", info: "Tipo entero." },
+            { word: "long", info: "Tipo entero largo." },
+            { word: "mutable", info: "Permite que un miembro de datos sea modificado en un objeto const." },
+            { word: "namespace", info: "Declara un espacio de nombres." },
+            { word: "new", info: "Asigna memoria dinámica." },
+            { word: "noexcept", info: "Especifica si una función puede lanzar excepciones." },
+            { word: "not", info: "Operador lógico NOT (equivalente a !)." },
+            { word: "not_eq", info: "Operador de desigualdad (equivalente a !=)." },
+            { word: "nullptr", info: "Puntero nulo." },
+            { word: "operator", info: "Declara una función de operador sobrecargado." },
+            { word: "or", info: "Operador lógico OR (equivalente a ||)." },
+            { word: "or_eq", info: "Operador de asignación compuesta OR (equivalente a |=)." },
+            { word: "private", info: "Declara miembros de clase inaccesibles desde fuera de la clase." },
+            { word: "protected", info: "Declara miembros de clase accesibles solo para clases derivadas." },
+            { word: "public", info: "Declara miembros de clase accesibles desde fuera de la clase." },
+            { word: "reflexpr", info: "Proporciona reflexión de tipo en tiempo de ejecución." },
+            { word: "register", info: "Sugiere al compilador que almacene una variable en un registro (obsoleto en C++17)." },
+            { word: "reinterpret_cast", info: "Convierte entre tipos reinterpretando el patrón de bits." },
+            { word: "requires", info: "Especifica restricciones de plantillas." },
+            { word: "return", info: "Retorna de una función." },
+            { word: "short", info: "Tipo entero corto." },
+            { word: "signed", info: "Declara que una variable puede representar valores negativos." },
+            { word: "sizeof", info: "Devuelve el tamaño de un tipo o variable." },
+            { word: "static", info: "Declara una variable o función con duración de almacenamiento estática." },
+            { word: "static_assert", info: "Comprueba una condición en tiempo de compilación." },
+            { word: "static_cast", info: "Realiza conversiones de tipo en tiempo de compilación." },
+            { word: "struct", info: "Declara un tipo de estructura." },
+            { word: "switch", info: "Inicia una declaración switch." },
+            { word: "synchronized", info: "Declaración sincronizada (propuesta)." },
+            { word: "template", info: "Declara una plantilla." },
+            { word: "this", info: "Puntero al objeto actual en una función miembro." },
+            { word: "thread_local", info: "Declara una variable con almacenamiento específico del hilo." },
+            { word: "throw", info: "Lanza una excepción." },
+            { word: "true", info: "Valor booleano verdadero." },
+            { word: "try", info: "Inicia un bloque try-catch." },
+            { word: "typedef", info: "Crea un alias para un tipo." },
+            { word: "typeid", info: "Obtiene información de tipo en tiempo de ejecución." },
+            { word: "typename", info: "Declara un parámetro de tipo en una plantilla." },
+            { word: "union", info: "Declara un tipo de unión." },
+            { word: "unsigned", info: "Declara que una variable solo puede representar valores no negativos." },
+            { word: "using", info: "Introduce un espacio de nombres en el ámbito actual o declara un alias." },
+            { word: "virtual", info: "Declara una función virtual." },
+            { word: "void", info: "Especifica que una función no devuelve un valor o un puntero a un tipo no especificado." },
+            { word: "volatile", info: "Declara que una variable puede cambiar de forma inesperada." },
+            { word: "wchar_t", info: "Tipo de carácter amplio." },
+            { word: "while", info: "Inicia un bucle while." },
+            { word: "xor", info: "Operador bitwise XOR (equivalente a ^)." },
+            { word: "xor_eq", info: "Operador de asignación compuesta XOR (equivalente a ^=)." },
+            { word: "override", info: "Especifica que una función virtual anula una función virtual de la clase base." },
+            { word: "final", info: "Especifica que una clase no puede ser heredada o que una función virtual no puede ser anulada." },
+        ];
+
+        cppKeywords.forEach(({ word, info }) => trie.insert(word, info));
+
+        const searchInput = document.getElementById('search');
+        const suggestionsList = document.getElementById('suggestions');
+        const selectedKeyword = document.getElementById('selected-keyword');
+        const keywordSpan = document.getElementById('keyword');
+        const keywordInfo = document.getElementById('keyword-info');
+        const trieVisualization = document.getElementById('trie-visualization');
+
+        function highlightMatch(text, query) {
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function updateTrieVisualization(prefix, highlightedWords) {
+            const visualizationText = trie.visualize(prefix, highlightedWords);
+            trieVisualization.textContent = visualizationText;
+        }
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            const suggestions = trie.wordsWithPrefix(query);
+
+            suggestionsList.innerHTML = '';
+            if (query && suggestions.length) {
+                suggestions.forEach(({ word }) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = highlightMatch(word, query);
+                    li.addEventListener('click', () => {
+                        searchInput.value = word;
+                        suggestionsList.style.display = 'none';
+                        showKeywordInfo(word);
+                        updateTrieVisualization(word, [word]);
+                    });
+                    suggestionsList.appendChild(li);
+                });
+                suggestionsList.style.display = 'block';
+            } else {
+                suggestionsList.style.display = 'none';
+            }
+
+            updateTrieVisualization(query, suggestions.map(s => s.word));
+        });
+
+        function showKeywordInfo(word) {
+            const node = trie.search(word);
+            if (node) {
+                keywordSpan.textContent = word;
+                keywordInfo.textContent = node.info;
+                selectedKeyword.style.display = 'block';
+            } else {
+                selectedKeyword.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.autocomplete-container')) {
+                suggestionsList.style.display = 'none';
+            }
+        });
+
+        searchInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                const firstSuggestion = suggestionsList.querySelector('li');
+                if (firstSuggestion) {
+                    const word = firstSuggestion.textContent;
+                    searchInput.value = word;
+                    suggestionsList.style.display = 'none';
+                    showKeywordInfo(word);
+                    updateTrieVisualization(word, [word]);
+                }
+            }
+        });
+
+        // Inicializar la visualización del Trie
+        updateTrieVisualization('', []);
+    </script>
+</body>
+</html>

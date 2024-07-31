@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Biblioteca</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        input, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+        }
+        button {
+            background-color: #0056b3;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        .output {
+            margin-top: 20px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Gestión de Libros de la Biblioteca</h1>
+
+    <form id="insertForm">
+        <input type="number" id="bookId" placeholder="ID del Libro" required>
+        <input type="text" id="bookTitle" placeholder="Título del Libro" required>
+        <input type="text" id="bookAuthor" placeholder="Autor del Libro" required>
+        <button type="submit">Insertar Libro</button>
+    </form>
+
+    <form id="searchForm">
+        <input type="number" id="searchId" placeholder="Buscar por ID del Libro" required>
+        <button type="submit">Buscar Libro</button>
+    </form>
+
+    <form id="removeForm">
+        <input type="number" id="removeId" placeholder="Eliminar por ID del Libro" required>
+        <button type="submit">Eliminar Libro</button>
+    </form>
+
+    <button id="traverseButton">Mostrar Todos los Libros</button>
+
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+    class Node {
+        constructor(id, title, author) {
+            this.id = id;
+            this.title = title;
+            this.author = author;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    class BinarySearchTree {
+        constructor() {
+            this.root = null;
+        }
+
+        insert(id, title, author) {
+            const newNode = new Node(id, title, author);
+            if (this.root === null) {
+                this.root = newNode;
+            } else {
+                this._insertNode(this.root, newNode);
+            }
+        }
+
+        _insertNode(node, newNode) {
+            if (newNode.id < node.id) {
+                if (node.left === null) {
+                    node.left = newNode;
+                } else {
+                    this._insertNode(node.left, newNode);
+                }
+            } else {
+                if (node.right === null) {
+                    node.right = newNode;
+                } else {
+                    this._insertNode(node.right, newNode);
+                }
+            }
+        }
+
+        search(id) {
+            return this._searchNode(this.root, id);
+        }
+
+        _searchNode(node, id) {
+            if (node === null) {
+                return null;
+            }
+            if (id < node.id) {
+                return this._searchNode(node.left, id);
+            } else if (id > node.id) {
+                return this._searchNode(node.right, id);
+            } else {
+                return node;
+            }
+        }
+
+        remove(id) {
+            this.root = this._removeNode(this.root, id);
+        }
+
+        _removeNode(node, id) {
+            if (node === null) {
+                return null;
+            }
+            if (id < node.id) {
+                node.left = this._removeNode(node.left, id);
+                return node;
+            } else if (id > node.id) {
+                node.right = this._removeNode(node.right, id);
+                return node;
+            } else {
+                if (node.left === null && node.right === null) {
+                    node = null;
+                    return node;
+                }
+                if (node.left === null) {
+                    node = node.right;
+                    return node;
+                } else if (node.right === null) {
+                    node = node.left;
+                    return node;
+                }
+                const aux = this._findMinNode(node.right);
+                node.id = aux.id;
+                node.title = aux.title;
+                node.author = aux.author;
+                node.right = this._removeNode(node.right, aux.id);
+                return node;
+            }
+        }
+
+        _findMinNode(node) {
+            if (node.left === null) {
+                return node;
+            } else {
+                return this._findMinNode(node.left);
+            }
+        }
+
+        inorderTraversal() {
+            let result = [];
+            this._inorderTraversalNode(this.root, result);
+            return result;
+        }
+
+        _inorderTraversalNode(node, result) {
+            if (node !== null) {
+                this._inorderTraversalNode(node.left, result);
+                result.push(`ID: ${node.id}, Título: ${node.title}, Autor: ${node.author}`);
+                this._inorderTraversalNode(node.right, result);
+            }
+        }
+    }
+
+    const bst = new BinarySearchTree();
+
+    document.getElementById('insertForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const id = parseInt(document.getElementById('bookId').value);
+        const title = document.getElementById('bookTitle').value;
+        const author = document.getElementById('bookAuthor').value;
+        bst.insert(id, title, author);
+        document.getElementById('insertForm').reset();
+        displayMessage('¡Libro insertado exitosamente!');
+    });
+
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const id = parseInt(document.getElementById('searchId').value);
+        const book = bst.search(id);
+        if (book !== null) {
+            displayMessage(`Libro encontrado: ID: ${book.id}, Título: ${book.title}, Autor: ${book.author}`);
+        } else {
+            displayMessage('Libro no encontrado');
+        }
+    });
+
+    document.getElementById('removeForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const id = parseInt(document.getElementById('removeId').value);
+        bst.remove(id);
+        displayMessage('¡Libro eliminado exitosamente!');
+    });
+
+    document.getElementById('traverseButton').addEventListener('click', function () {
+        const books = bst.inorderTraversal();
+        if (books.length > 0) {
+            displayMessage('Libros en la biblioteca:<br>' + books.join('<br>'));
+        } else {
+            displayMessage('No hay libros en la biblioteca');
+        }
+    });
+
+    function displayMessage(message) {
+        document.getElementById('output').innerHTML = message;
+    }
+</script>
+
+</body>
+</html>

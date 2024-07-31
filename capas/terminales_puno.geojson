@@ -1,0 +1,551 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2024-07-21T03:27:45Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1764388473",
+        "amenity": "bus_station",
+        "name": "Teminal terrestre",
+        "name:es": "Teminal terrestre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6477426,
+          -16.0820677
+        ]
+      },
+      "id": "node/1764388473"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800019",
+        "amenity": "bus_station",
+        "name": "Terminal Zonal Inter Distrital Cono Norte-Ayaviri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5993736,
+          -14.8784174
+        ]
+      },
+      "id": "node/3161800019"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4195329380",
+        "amenity": "bus_station",
+        "name": "Terminal Terrestre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4352649,
+          -14.0644741
+        ]
+      },
+      "id": "node/4195329380"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4195943889",
+        "addr:street": "Lampa",
+        "amenity": "bus_station",
+        "name": "Bus to Capachica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0194359,
+          -15.8321339
+        ]
+      },
+      "id": "node/4195943889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199050958",
+        "addr:street": "Avenida Tacna",
+        "amenity": "bus_station",
+        "description": "Salen colectivos hacia la Península de Capachica",
+        "name": "Terminal Zonal",
+        "name:es": "Terminal Zonal a Capachica",
+        "opening_hours": "Mo-Su 04:00-19:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1199857,
+          -15.4997891
+        ]
+      },
+      "id": "node/4199050958"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199098301",
+        "amenity": "bus_station",
+        "name": "Transporte local: colectivos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0171491,
+          -15.8455381
+        ]
+      },
+      "id": "node/4199098301"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214681853",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7554252,
+          -16.0084629
+        ]
+      },
+      "id": "node/4214681853"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214684081",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.640994,
+          -16.0912719
+        ]
+      },
+      "id": "node/4214684081"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214686686",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6389251,
+          -16.0914906
+        ]
+      },
+      "id": "node/4214686686"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214688859",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.000495,
+          -15.8618954
+        ]
+      },
+      "id": "node/4214688859"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214690249",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0148655,
+          -15.8536765
+        ]
+      },
+      "id": "node/4214690249"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214690250",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0188383,
+          -15.8492915
+        ]
+      },
+      "id": "node/4214690250"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214691560",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0008892,
+          -15.8618322
+        ]
+      },
+      "id": "node/4214691560"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214691561",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0014925,
+          -15.8607177
+        ]
+      },
+      "id": "node/4214691561"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4230462695",
+        "amenity": "bus_station",
+        "name": "Sur Oriente"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1229927,
+          -15.490957
+        ]
+      },
+      "id": "node/4230462695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4279550481",
+        "amenity": "bus_station",
+        "description": "Buses to Juliaca"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8652854,
+          -14.9158061
+        ]
+      },
+      "id": "node/4279550481"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4310357394",
+        "amenity": "bus_station",
+        "name": "Rossy Tours"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0260741,
+          -15.8386912
+        ]
+      },
+      "id": "node/4310357394"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4341571985",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "public_transport": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.4473002,
+          -14.6343491
+        ]
+      },
+      "id": "node/4341571985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4547076784",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "name": "Terminal Terrestre de Puno",
+        "public_transport": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.017115,
+          -15.8436513
+        ]
+      },
+      "id": "node/4547076784"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4548556189",
+        "addr:street": "Avenida La Torre",
+        "amenity": "bus_station",
+        "name": "Collectivos a Juliaca",
+        "name:en": "Collectivos to Juliaca",
+        "name:es": "Collectivos a Juliaca"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0281309,
+          -15.8324143
+        ]
+      },
+      "id": "node/4548556189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5024756823",
+        "amenity": "bus_station",
+        "name": "A Putina",
+        "name:en": "To Putina"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1255453,
+          -15.4858839
+        ]
+      },
+      "id": "node/5024756823"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5025254921",
+        "amenity": "bus_station",
+        "name": "Terminal de buses",
+        "name:es": "Terminal de buses"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4291487,
+          -14.0678202
+        ]
+      },
+      "id": "node/5025254921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662657",
+        "amenity": "bus_station",
+        "name": "A Huancané"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1257777,
+          -15.4875577
+        ]
+      },
+      "id": "node/5166662657"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5173953390",
+        "amenity": "bus_station",
+        "name": "A Sicuani"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.13657,
+          -15.48254
+        ]
+      },
+      "id": "node/5173953390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5321084421",
+        "addr:street": "Avenida Tacna",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "description": "Salida de microbuses para Puno",
+        "name": "Dorado express",
+        "public_transport": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1285963,
+          -15.5031807
+        ]
+      },
+      "id": "node/5321084421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6746461386",
+        "addr:street": "Jirón Echenique",
+        "amenity": "bus_station",
+        "name": "Combis para Moquegua"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0183097,
+          -15.8443491
+        ]
+      },
+      "id": "node/6746461386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6793144786",
+        "addr:street": "Avenida Panamericana",
+        "amenity": "bus_station",
+        "name": "Estación de combis y buses"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0381322,
+          -16.5640852
+        ]
+      },
+      "id": "node/6793144786"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6793339185",
+        "amenity": "bus_station",
+        "name": "Terminal terrestre el Collao"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6478766,
+          -16.0820856
+        ]
+      },
+      "id": "node/6793339185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6979882285",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "name": "Expresso Turismo Mayta",
+        "public_transport": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0893869,
+          -16.247243
+        ]
+      },
+      "id": "node/6979882285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6979882385",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "name": "Expresso Turismo Sol Andino",
+        "public_transport": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0894676,
+          -16.2471902
+        ]
+      },
+      "id": "node/6979882385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7185256287",
+        "amenity": "bus_station",
+        "name": "Terminal a Puno"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1247231,
+          -15.4912871
+        ]
+      },
+      "id": "node/7185256287"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9993409518",
+        "amenity": "bus_station",
+        "description": "Miniban Arequipa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1365253,
+          -15.4812512
+        ]
+      },
+      "id": "node/9993409518"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10554766519",
+        "amenity": "bus_station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0987871,
+          -16.2477617
+        ]
+      },
+      "id": "node/10554766519"
+    }
+  ]
+}

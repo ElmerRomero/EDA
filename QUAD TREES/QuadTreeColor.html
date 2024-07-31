@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quad Tree Image Decomposition and Compression</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls input, .controls button {
+            margin: 5px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .controls label {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        canvas {
+            border: 1px solid #333;
+            margin: 10px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Descomposición y Compresión de Imágenes con Quad Trees</h1>
+    <div class="controls">
+        <input type="file" id="upload" accept="image/*">
+        <label for="threshold">Umbral de homogeneidad:</label>
+        <input type="number" id="threshold" value="10">
+        <button onclick="processImage()">Procesar Imagen</button>
+    </div>
+    <div class="canvas-container">
+        <canvas id="originalCanvas"></canvas>
+        <canvas id="quadTreeCanvas"></canvas>
+        <canvas id="reconstructedCanvas"></canvas>
+    </div>
+    <div class="footer">
+        © 2024 Ejercicio Quad Trees - UNA-Puno
+    </div>
+
+    <script>
+        let originalCanvas = document.getElementById('originalCanvas');
+        let quadTreeCanvas = document.getElementById('quadTreeCanvas');
+        let reconstructedCanvas = document.getElementById('reconstructedCanvas');
+        let ctxOriginal = originalCanvas.getContext('2d');
+        let ctxQuadTree = quadTreeCanvas.getContext('2d');
+        let ctxReconstructed = reconstructedCanvas.getContext('2d');
+
+        function processImage() {
+            let file = document.getElementById('upload').files[0];
+            if (!file) {
+                alert('Por favor, suba una imagen primero.');
+                return;
+            }
+
+            let threshold = parseInt(document.getElementById('threshold').value);
+            let img = new Image();
+            img.src = URL.createObjectURL(file);
+
+            img.onload = function () {
+                originalCanvas.width = img.width;
+                originalCanvas.height = img.height;
+                quadTreeCanvas.width = img.width;
+                quadTreeCanvas.height = img.height;
+                reconstructedCanvas.width = img.width;
+                reconstructedCanvas.height = img.height;
+
+                ctxOriginal.drawImage(img, 0, 0);
+                let imgData = ctxOriginal.getImageData(0, 0, img.width, img.height);
+                
+                let quadTree = decomposeToQuadTree(imgData, threshold);
+                drawQuadTree(quadTree, ctxQuadTree, img.width, img.height);
+
+                let reconstructedImgData = reconstructFromQuadTree(quadTree, img.width, img.height);
+                ctxReconstructed.putImageData(reconstructedImgData, 0, 0);
+            };
+        }
+
+        function decomposeToQuadTree(imgData, threshold) {
+            function isHomogeneous(x, y, size) {
+                let data = imgData.data;
+                let sum = [0, 0, 0];
+                let count = 0;
+                for (let i = y; i < y + size; i++) {
+                    for (let j = x; j < x + size; j++) {
+                        let index = (i * imgData.width + j) * 4;
+                        sum[0] += data[index];
+                        sum[1] += data[index + 1];
+                        sum[2] += data[index + 2];
+                        count++;
+                    }
+                }
+                let avg = sum.map(v => v / count);
+                let variance = [0, 0, 0];
+                for (let i = y; i < y + size; i++) {
+                    for (let j = x; j < x + size; j++) {
+                        let index = (i * imgData.width + j) * 4;
+                        variance[0] += Math.pow(data[index] - avg[0], 2);
+                        variance[1] += Math.pow(data[index + 1] - avg[1], 2);
+                        variance[2] += Math.pow(data[index + 2] - avg[2], 2);
+                    }
+                }
+                variance = variance.map(v => Math.sqrt(v / count));
+                return Math.max(...variance) <= threshold;
+            }
+
+            function buildQuadTree(x, y, size) {
+                if (size <= 1 || isHomogeneous(x, y, size)) {
+                    let index = (y * imgData.width + x) * 4;
+                    let color = [imgData.data[index], imgData.data[index + 1], imgData.data[index + 2]];
+                    return { x, y, size, color };
+                } else {
+                    let halfSize = size / 2;
+                    return {
+                        x, y, size,
+                        children: [
+                            buildQuadTree(x, y, halfSize),
+                            buildQuadTree(x + halfSize, y, halfSize),
+                            buildQuadTree(x, y + halfSize, halfSize),
+                            buildQuadTree(x + halfSize, y + halfSize, halfSize)
+                        ]
+                    };
+                }
+            }
+
+            return buildQuadTree(0, 0, imgData.width);
+        }
+
+        function drawQuadTree(node, ctx, width, height) {
+            ctx.clearRect(0, 0, width, height);
+
+            function drawNode(node) {
+                if (node.children) {
+                    node.children.forEach(child => drawNode(child));
+                } else {
+                    ctx.fillStyle = `rgb(${node.color[0]}, ${node.color[1]}, ${node.color[2]})`;
+                    ctx.fillRect(node.x, node.y, node.size, node.size);
+                    ctx.strokeStyle = 'black';
+                    ctx.strokeRect(node.x, node.y, node.size, node.size);
+                }
+            }
+
+            drawNode(node);
+        }
+
+        function reconstructFromQuadTree(node, width, height) {
+            let imgData = ctxOriginal.createImageData(width, height);
+            let data = imgData.data;
+
+            function fillNode(node) {
+                if (node.children) {
+                    node.children.forEach(child => fillNode(child));
+                } else {
+                    for (let i = node.y; i < node.y + node.size; i++) {
+                        for (let j = node.x; j < node.x + node.size; j++) {
+                            let index = (i * width + j) * 4;
+                            data[index] = node.color[0];
+                            data[index + 1] = node.color[1];
+                            data[index + 2] = node.color[2];
+                            data[index + 3] = 255;
+                        }
+                    }
+                }
+            }
+
+            fillNode(node);
+            return imgData;
+        }
+    </script>
+</body>
+</html>

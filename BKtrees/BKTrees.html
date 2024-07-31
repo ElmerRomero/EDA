@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Explorer - Tourist Attractions</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #ecf0f1;
+            --text-color: #34495e;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #search {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+        }
+
+        #results {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .result-item {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .result-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        #attractions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .attraction {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .attraction:hover {
+            transform: translateY(-5px);
+        }
+
+        .attraction h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .attraction p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            #controls {
+                flex-direction: column;
+            }
+
+            #search, button {
+                width: 100%;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Global Explorer</h1>
+    </header>
+    <div class="container">
+        <div id="controls">
+            <input type="text" id="search" placeholder="Enter country name">
+            <button>Explore</button>
+        </div>
+        <div id="results"></div>
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+        <div id="attractions"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        class BKTree {
+            constructor(word) {
+                this.word = word;
+                this.children = {};
+            }
+
+            add(word) {
+                const distance = this._levenshtein(this.word, word);
+                if (this.children[distance] === undefined) {
+                    this.children[distance] = new BKTree(word);
+                } else {
+                    this.children[distance].add(word);
+                }
+            }
+
+            search(word, tolerance) {
+                const results = [];
+                const distance = this._levenshtein(this.word, word);
+                if (distance <= tolerance) {
+                    results.push(this.word);
+                }
+
+                for (let i = distance - tolerance; i <= distance + tolerance; i++) {
+                    if (this.children[i]) {
+                        results.push(...this.children[i].search(word, tolerance));
+                    }
+                }
+                return results;
+            }
+
+            _levenshtein(a, b) {
+                const matrix = [];
+                for (let i = 0; i <= b.length; i++) {
+                    matrix[i] = [i];
+                }
+                for (let j = 0; j <= a.length; j++) {
+                    matrix[0][j] = j;
+                }
+                for (let i = 1; i <= b.length; i++) {
+                    for (let j = 1; j <= a.length; j++) {
+                        if (b.charAt(i - 1) == a.charAt(j - 1)) {
+                            matrix[i][j] = matrix[i - 1][j - 1];
+                        } else {
+                            matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1,
+                                                    Math.min(matrix[i][j - 1] + 1,
+                                                             matrix[i - 1][j] + 1));
+                        }
+                    }
+                }
+                return matrix[b.length][a.length];
+            }
+        }
+
+        const countries = [
+    { name: "France", attractions: [
+        { name: "Eiffel Tower", lat: 48.8584, lon: 2.2945, description: "An iron lattice tower in Paris, named after the engineer Gustave Eiffel." },
+        { name: "Louvre Museum", lat: 48.8606, lon: 2.3376, description: "The world's largest art museum and a historic monument in Paris." },
+        { name: "Notre-Dame Cathedral", lat: 48.8529, lon: 2.3508, description: "A medieval Catholic cathedral on the Île de la Cité in the 4th arrondissement of Paris." }
+    ]},
+    { name: "Italy", attractions: [
+        { name: "Colosseum", lat: 41.8902, lon: 12.4922, description: "An ancient amphitheatre in the center of Rome, Italy." },
+        { name: "Leaning Tower of Pisa", lat: 43.7229, lon: 10.3966, description: "A freestanding bell tower of the cathedral of the Italian city of Pisa." },
+        { name: "Venice Canals", lat: 45.4408, lon: 12.3155, description: "A network of canals and bridges in Venice, Italy." }
+    ]},
+    { name: "USA", attractions: [
+        { name: "Statue of Liberty", lat: 40.6892, lon: -74.0445, description: "A colossal neoclassical sculpture on Liberty Island in New York Harbor." },
+        { name: "Yellowstone National Park", lat: 44.4280, lon: -110.5885, description: "A nearly 3,500-sq.-mile wilderness recreation area atop a volcanic hot spot." },
+        { name: "Grand Canyon", lat: 36.1069, lon: -112.1129, description: "A steep-sided canyon carved by the Colorado River in Arizona, USA." }
+    ]},
+    { name: "Spain", attractions: [
+        { name: "Sagrada Familia", lat: 41.4036, lon: 2.1744, description: "A large unfinished Roman Catholic church in Barcelona, designed by Antoni Gaudí." },
+        { name: "Alhambra", lat: 37.1760, lon: -3.5881, description: "A palace and fortress complex located in Granada, Andalusia, Spain." },
+        { name: "Park Güell", lat: 41.4145, lon: 2.1527, description: "A public park system composed of gardens and architectonic elements in Barcelona." }
+    ]},
+    { name: "United Kingdom", attractions: [
+        { name: "Big Ben", lat: 51.5007, lon: -0.1246, description: "The nickname for the Great Bell of the clock at the north end of the Houses of Parliament in Westminster, London." },
+        { name: "Stonehenge", lat: 51.1789, lon: -1.8262, description: "A prehistoric monument in Wiltshire, England, consisting of a ring of standing stones." },
+        { name: "Tower Bridge", lat: 51.5055, lon: -0.0754, description: "A combined bascule and suspension bridge in London, built between 1886 and 1894." }
+    ]},
+    { name: "Germany", attractions: [
+        { name: "Brandenburg Gate", lat: 52.5163, lon: 13.3777, description: "An 18th-century neoclassical monument in Berlin, built on the orders of Prussian king Frederick William II." },
+        { name: "Neuschwanstein Castle", lat: 47.5576, lon: 10.7498, description: "A 19th-century Romanesque Revival palace on a rugged hill above the village of Hohenschwangau in southwest Bavaria, Germany." },
+        { name: "Cologne Cathedral", lat: 50.9413, lon: 6.9583, description: "A Catholic cathedral in Cologne, North Rhine-Westphalia, Germany. It is a renowned monument of German Catholicism and Gothic architecture." }
+    ]},
+    { name: "Japan", attractions: [
+        { name: "Mount Fuji", lat: 35.3606, lon: 138.7274, description: "Japan's tallest peak, an active volcano about 100 kilometers southwest of Tokyo." },
+        { name: "Fushimi Inari Taisha", lat: 34.9671, lon: 135.7727, description: "The head shrine of the god Inari, located in Fushimi-ku, Kyoto, Japan." },
+        { name: "Tokyo Skytree", lat: 35.7101, lon: 139.8107, description: "A broadcasting and observation tower in Sumida, Tokyo. It is the tallest structure in Japan." }
+    ]},
+    { name: "Australia", attractions: [
+        { name: "Sydney Opera House", lat: -33.8568, lon: 151.2153, description: "A multi-venue performing arts centre in Sydney. It is one of the 20th century's most famous and distinctive buildings." },
+        { name: "Great Barrier Reef", lat: -18.2871, lon: 147.6992, description: "The world's largest coral reef system composed of over 2,900 individual reefs and 900 islands." },
+        { name: "Uluru", lat: -25.3444, lon: 131.0369, description: "A large sandstone rock formation in the southern part of the Northern Territory in central Australia." }
+    ]},
+    { name: "Brazil", attractions: [
+        { name: "Christ the Redeemer", lat: -22.9519, lon: -43.2105, description: "An Art Deco statue of Jesus Christ in Rio de Janeiro, created by French sculptor Paul Landowski." },
+        { name: "Iguazu Falls", lat: -25.6953, lon: -54.4367, description: "Waterfalls of the Iguazu River on the border of the Argentine province of Misiones and the Brazilian state of Paraná." },
+        { name: "Copacabana Beach", lat: -22.9868, lon: -43.1986, description: "A 4 km long beach located in the South Zone of Rio de Janeiro." }
+    ]},
+    { name: "Egypt", attractions: [
+        { name: "Great Pyramid of Giza", lat: 29.9792, lon: 31.1342, description: "The oldest and largest of the three pyramids in the Giza pyramid complex. It is the oldest of the Seven Wonders of the Ancient World." },
+        { name: "Luxor Temple", lat: 25.6995, lon: 32.6368, description: "A large Ancient Egyptian temple complex located on the east bank of the Nile River in the city today known as Luxor." },
+        { name: "Valley of the Kings", lat: 25.7402, lon: 32.6014, description: "A valley where tombs were constructed for the Pharaohs and powerful nobles of the New Kingdom." }
+    ]},
+    { name: "Greece", attractions: [
+        { name: "Acropolis of Athens", lat: 37.9715, lon: 23.7257, description: "An ancient citadel located on a rocky outcrop above the city of Athens containing the remains of several ancient buildings of great architectural and historic significance." },
+        { name: "Santorini", lat: 36.3932, lon: 25.4615, description: "A volcanic island in the Cyclades group of the Greek islands known for its dramatic views, stunning sunsets, and white, cube-shaped houses." },
+        { name: "Meteora", lat: 39.7217, lon: 21.6306, description: "A rock formation in central Greece hosting one of the largest and most precipitously built complexes of Eastern Orthodox monasteries." }
+    ]},
+    { name: "India", attractions: [
+        { name: "Taj Mahal", lat: 27.1751, lon: 78.0421, description: "An ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra." },
+        { name: "Golden Temple", lat: 31.6200, lon: 74.8765, description: "A gurdwara located in the city of Amritsar, Punjab. It is the preeminent spiritual site of Sikhism." },
+        { name: "Amber Fort", lat: 26.9855, lon: 75.8513, description: "A fort located in Amer, Rajasthan. It is known for its artistic style elements." }
+    ]},
+    { name: "China", attractions: [
+        { name: "Great Wall of China", lat: 40.4319, lon: 116.5704, description: "A series of fortifications made of stone, brick, tamped earth, wood, and other materials, built across the historical northern borders of ancient Chinese states." },
+        { name: "Forbidden City", lat: 39.9169, lon: 116.3907, description: "A palace complex in central Beijing. It houses the Palace Museum, and was the former Chinese imperial palace from the Ming dynasty to the end of the Qing dynasty." },
+        { name: "Terracotta Army", lat: 34.3841, lon: 109.2785, description: "A collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China." }
+    ]},
+    { name: "Mexico", attractions: [
+        { name: "Chichen Itza", lat: 20.6843, lon: -88.5678, description: "A pre-Columbian city built by the Maya people. It was one of the largest Maya cities and it has been designated as a UNESCO World Heritage Site." },
+        { name: "Tulum", lat: 20.2114, lon: -87.4654, description: "The site of a pre-Columbian Mayan walled city serving as a major port for Coba. The ruins are situated on 12-meter tall cliffs along the east coast of the Yucatán Peninsula." },
+        { name: "Frida Kahlo Museum", lat: 19.3551, lon: -99.1629, description: "A historic house museum and art museum dedicated to the life and work of Mexican artist Frida Kahlo." }
+    ]},
+    { name: "Peru", attractions: [
+        { name: "Machu Picchu", lat: -13.1631, lon: -72.5450, description: "A 15th-century Inca citadel situated on a mountain ridge 2,430 metres above sea level." },
+        { name: "Nazca Lines", lat: -14.7390, lon: -75.1300, description: "A group of very large geoglyphs formed by depressions or shallow incisions made in the soil of the Nazca Desert in southern Peru." },
+        { name: "Cusco", lat: -13.5319, lon: -71.9675, description: "A city in southeastern Peru, near the Urubamba Valley of the Andes mountain range. It is the former capital of the Inca Empire." }
+    ]},
+    { name: "Thailand", attractions: [
+        { name: "Grand Palace", lat: 13.7500, lon: 100.4915, description: "A complex of buildings at the heart of Bangkok, the capital of Thailand. It has been the official residence of the Kings of Siam since 1782." },
+        { name: "Phi Phi Islands", lat: 7.7407, lon: 98.7784, description: "A small archipelago of six islands in Krabi Province, Southern Thailand. Phi Phi Don is the largest island of the group, and is the only island with permanent inhabitants." },
+        { name: "Wat Phra That Doi Suthep", lat: 18.8048, lon: 98.9217, description: "A Theravada Buddhist temple in Chiang Mai Province, Thailand. The temple is often referred to as 'Doi Suthep' although this is actually the name of the mountain where it's located." }
+    ]},
+    { name: "Turkey", attractions: [
+        { name: "Hagia Sophia", lat: 41.0086, lon: 28.9802, description: "A former Greek Orthodox Christian patriarchal cathedral, later an Ottoman imperial mosque and now a museum in Istanbul, Turkey." },
+        { name: "Cappadocia", lat: 38.6431, lon: 34.8289, description: "A historical region in Central Anatolia, largely in Nevşehir Province, known for its unique geological features called fairy chimneys." },
+        { name: "Pamukkale", lat: 37.9207, lon: 29.1207, description: "A town in western Turkey known for the mineral-rich thermal waters flowing down white travertine terraces on a nearby hillside." }
+    ]},
+    { name: "Russia", attractions: [
+        { name: "Red Square", lat: 55.7539, lon: 37.6208, description: "A city square in Moscow, Russia. It separates the Kremlin, the former royal citadel and now the official residence of the President of Russia, from a historic merchant quarter known as Kitai-gorod." },
+        { name: "Hermitage Museum", lat: 59.9398, lon: 30.3146, description: "A museum of art and culture in Saint Petersburg, Russia. It is the second-largest art museum in the world." },
+        { name: "Lake Baikal", lat: 53.5262, lon: 108.1982, description: "A rift lake in southern Siberia, Russia. It is the largest freshwater lake by volume in the world, containing 22–23% of the world's fresh surface water." }
+    ]},
+    { name: "Canada", attractions: [
+        { name: "Niagara Falls", lat: 43.0962, lon: -79.0377, description: "A group of three waterfalls at the southern end of Niagara Gorge, spanning the border between the US state of New York and the Canadian province of Ontario." },
+        { name: "Banff National Park", lat: 51.4968, lon: -115.9281, description: "Canada's oldest national park, established in 1885 in the Rocky Mountains. It encompasses 6,641 square kilometres of mountainous terrain." },
+        { name: "CN Tower", lat: 43.6426, lon: -79.3871, description: "A 553.3 m-high concrete communications and observation tower in downtown Toronto, Ontario, Canada." }
+    ]},
+    { name: "South Africa", attractions: [
+        { name: "Table Mountain", lat: -33.9628, lon: 18.4098, description: "A flat-topped mountain forming a prominent landmark overlooking the city of Cape Town in South Africa." },
+        { name: "Kruger National Park", lat: -23.9884, lon: 31.5547, description: "One of Africa's largest game reserves. It covers an area of 19,485 square kilometres in northeastern South Africa." },
+        { name: "Robben Island", lat: -33.8076, lon: 18.3712, description: "An island in Table Bay, 6.9 km west of the coast of Bloubergstrand, Cape Town, South Africa. It is known for being the place where Nelson Mandela was imprisoned for 18 years." }
+    ]},
+    { name: "New Zealand", attractions: [
+        { name: "Milford Sound", lat: -44.6414, lon: 167.8974, description: "A fiord in the southwest of New Zealand's South Island. It's known for towering Mitre Peak, plus rainforests and waterfalls like Stirling and Bowen falls." },
+        { name: "Hobbiton Movie Set", lat: -37.8721, lon: 175.6830, description: "A significant location used for The Lord of the Rings film trilogy and The Hobbit film series, located on a family-run farm about 8 kilometers west of Hinuera and 10 kilometers southwest of Matamata, in Waikato, New Zealand." },
+        { name: "Tongariro National Park", lat: -39.2721, lon: 175.5802, description: "The oldest national park in New Zealand, located in the central North Island. It has been acknowledged by UNESCO as a World Heritage Site of mixed cultural and natural values." }
+    ]}
+];
+
+        const bkTree = new BKTree(countries[0].name);
+        for (let i = 1; i < countries.length; i++) {
+            bkTree.add(countries[i].name);
+        }
+
+        const map = L.map('map').setView([20, 0], 2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        function performSearch() {
+            const searchTerm = document.getElementById("search").value;
+            const results = bkTree.search(searchTerm, 2);
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsList = document.getElementById("results");
+            resultsList.innerHTML = "";
+            results.forEach(result => {
+                const listItem = document.createElement("div");
+                listItem.className = "result-item";
+                listItem.textContent = result;
+                listItem.onclick = () => {
+                    const country = countries.find(c => c.name === result);
+                    displayAttractions(country);
+                };
+                resultsList.appendChild(listItem);
+            });
+        }
+
+        function displayAttractions(country) {
+            // Clear previous markers and attractions
+            map.eachLayer((layer) => {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer);
+                }
+            });
+            document.getElementById("attractions").innerHTML = "";
+
+            // Set the view to the first attraction
+            if (country.attractions.length > 0) {
+                map.setView([country.attractions[0].lat, country.attractions[0].lon], 5);
+            }
+
+            country.attractions.forEach(attraction => {
+                L.marker([attraction.lat, attraction.lon]).addTo(map)
+                    .bindPopup(`<b>${attraction.name}</b><br>${attraction.description}`);
+
+                const attractionDiv = document.createElement("div");
+                attractionDiv.className = "attraction";
+                attractionDiv.innerHTML = `
+                    <h3>${attraction.name}</h3>
+                    <p>${attraction.description}</p>
+                `;
+                document.getElementById("attractions").appendChild(attractionDiv);
+            });
+        }
+
+        // Add event listener to the search button
+        document.querySelector('button').addEventListener('click', performSearch);
+
+        // Add event listener for the Enter key in the search input
+        document.getElementById('search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>

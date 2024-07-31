@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageFinder - Búsqueda de Imágenes Similares</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+        .image-item {
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .image-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-title {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .progress-bar {
+            background-color: #4CAF50;
+        }
+        h1, h2 {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .image-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        #results {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-5"><i class="fas fa-images"></i> ImageFinder</h1>
+        <div id="image-list" class="mb-4"></div>
+        <div id="results" class="mt-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        class Image {
+            constructor(id, features, icon, description) {
+                this.id = id;
+                this.features = features;
+                this.icon = icon;
+                this.description = description;
+            }
+        }
+
+        class Node {
+            constructor(image) {
+                this.image = image;
+                this.radius = 0;
+                this.inside = null;
+                this.outside = null;
+            }
+        }
+
+        class VPTree {
+            constructor(images, distanceFunc) {
+                this.distanceFunc = distanceFunc;
+                this.root = this.buildTree([...images]);
+            }
+
+            buildTree(images) {
+                if (images.length === 0) return null;
+
+                const index = Math.floor(Math.random() * images.length);
+                const [image] = images.splice(index, 1);
+                const node = new Node(image);
+
+                if (images.length === 0) return node;
+
+                const distances = images.map(img => this.distanceFunc(image.features, img.features));
+                const median = this.median(distances);
+                node.radius = median;
+
+                const [insideImages, outsideImages] = images.reduce((acc, img, i) => {
+                    acc[distances[i] <= median ? 0 : 1].push(img);
+                    return acc;
+                }, [[], []]);
+
+                node.inside = this.buildTree(insideImages);
+                node.outside = this.buildTree(outsideImages);
+
+                return node;
+            }
+
+            median(values) {
+                const sorted = [...values].sort((a, b) => a - b);
+                return sorted[Math.floor(sorted.length / 2)];
+            }
+
+            search(image, maxResults, node = this.root, neighbors = []) {
+                if (!node) return neighbors;
+
+                const dist = this.distanceFunc(image.features, node.image.features);
+                if (neighbors.length < maxResults || dist < neighbors[neighbors.length - 1]?.distance) {
+                    neighbors.push({ image: node.image, distance: dist });
+                    neighbors.sort((a, b) => a.distance - b.distance);
+                    if (neighbors.length > maxResults) neighbors.pop();
+                }
+
+                const [first, second] = dist < node.radius 
+                    ? [node.inside, node.outside] 
+                    : [node.outside, node.inside];
+
+                this.search(image, maxResults, first, neighbors);
+                if (neighbors.length < maxResults || Math.abs(node.radius - dist) < neighbors[neighbors.length - 1].distance) {
+                    this.search(image, maxResults, second, neighbors);
+                }
+
+                return neighbors;
+            }
+        }
+
+        const images = [
+            new Image(1, [128, 64, 64, 0.5, 0.8], 'fas fa-mountain', 'Paisaje montañoso'),
+            new Image(2, [130, 60, 70, 0.6, 0.7], 'fas fa-tree', 'Bosque frondoso'),
+            new Image(3, [120, 65, 60, 0.4, 0.9], 'fas fa-umbrella-beach', 'Playa soleada'),
+            new Image(4, [125, 70, 80, 0.7, 0.6], 'fas fa-city', 'Ciudad moderna'),
+            new Image(5, [140, 55, 75, 0.8, 0.5], 'fas fa-landmark', 'Monumento histórico'),
+            new Image(6, [132, 67, 68, 0.5, 0.85], 'fas fa-water', 'Cascada cristalina'),
+            new Image(7, [135, 62, 72, 0.65, 0.75], 'fas fa-bridge', 'Puente icónico'),
+            new Image(8, [122, 66, 63, 0.45, 0.92], 'fas fa-snowflake', 'Paisaje nevado'),
+            new Image(9, [127, 72, 82, 0.72, 0.62], 'fas fa-sun', 'Amanecer espectacular'),
+            new Image(10, [142, 57, 77, 0.82, 0.52], 'fas fa-meteor', 'Cielo estrellado')
+        ];
+
+        const euclideanDistance = (a, b) => Math.hypot(...a.map((x, i) => x - b[i]));
+
+        const vpTree = new VPTree(images, euclideanDistance);
+
+        const findSimilarImages = selectedImage => {
+            const maxResults = 3;
+            const similarImages = vpTree.search(selectedImage, maxResults);
+            displayResults(similarImages, selectedImage);
+        };
+
+        const displayResults = (similarImages, selectedImage) => {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '<h2 class="mt-4 mb-3">Resultados:</h2>';
+
+            const row = document.createElement('div');
+            row.className = 'row';
+
+            const createCard = (image, similarity = null) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6 mb-4';
+                const card = document.createElement('div');
+                card.className = 'card h-100 image-item';
+                card.innerHTML = `
+                    <div class="card-body text-center">
+                        <i class="${image.icon} image-icon"></i>
+                        <h5 class="card-title">${image.description}</h5>
+                        ${similarity !== null ? `<p class="card-text">
+                            <strong>Similitud:</strong> ${similarity.toFixed(2)}%
+                        </p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: ${similarity.toFixed(2)}%"></div>
+                        </div>` : `<p class="card-text">
+                            <strong>Características:</strong><br>[${image.features.join(', ')}]
+                        </p>`}
+                    </div>
+                `;
+                col.appendChild(card);
+                return col;
+            };
+
+            row.appendChild(createCard(selectedImage));
+
+            similarImages.forEach(item => {
+                if (item.image.id !== selectedImage.id) {
+                    const similarity = (100 - item.distance );
+                    row.appendChild(createCard(item.image, similarity));
+                }
+            });
+
+            resultsContainer.appendChild(row);
+            resultsContainer.style.opacity = '0';
+            setTimeout(() => {
+                resultsContainer.style.opacity = '1';
+            }, 100);
+        };
+
+
+        const displayImageList = () => {
+            const imageListContainer = document.getElementById('image-list');
+            imageListContainer.innerHTML = '<h2 class="mb-3">Seleccione una imagen:</h2>';
+
+            const row = document.createElement('div');
+            row.className = 'row';
+
+            images.forEach(image => {
+                const col = document.createElement('div');
+                col.className = 'col-md-3 mb-4';
+                const card = document.createElement('div');
+                card.className = 'card h-100 image-item';
+                card.onclick = () => findSimilarImages(image);
+                card.innerHTML = `
+                    <div class="card-body text-center">
+                        <i class="${image.icon} image-icon"></i>
+                        <h5 class="card-title">${image.description}</h5>
+                    </div>
+                `;
+                col.appendChild(card);
+                row.appendChild(col);
+            });
+
+            imageListContainer.appendChild(row);
+        };
+
+        window.onload = displayImageList;
+    </script>
+</body>
+</html>

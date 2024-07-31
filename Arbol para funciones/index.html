@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Nombres Similares</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        h1, h2 {
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="file"], button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #nameList {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        #results {
+            list-style-type: none;
+            padding: 0;
+        }
+        #results li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+        }
+        #results li:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Búsqueda de Nombres Similares</h1>
+
+        <div class="input-group">
+            <input type="text" id="newName" placeholder="Ingrese un nuevo nombre">
+            <button id="addNameButton">Agregar Nombre</button>
+        </div>
+
+        <div class="input-group">
+            <input type="file" id="fileInput" accept=".txt">
+            <button id="loadFileButton">Cargar Nombres</button>
+        </div>
+
+        <div class="input-group">
+            <button id="saveFileButton">Guardar Nombres en Archivo</button>
+        </div>
+
+        <h2>Nombres en la Base de Datos</h2>
+        <div id="nameList"></div>
+
+        <h2>Buscar Nombres Similares</h2>
+        <div class="input-group">
+            <input type="text" id="searchName" placeholder="Ingrese un nombre para buscar">
+        </div>
+        <ul id="results"></ul>
+    </div>
+
+    <script>
+        function levenshteinDistance(a, b) {
+            const matrix = Array(a.length + 1).fill(null).map(() => Array(b.length + 1).fill(null));
+
+            for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+            for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+
+            for (let i = 1; i <= a.length; i++) {
+                for (let j = 1; j <= b.length; j++) {
+                    const indicator = a[i - 1] === b[j - 1] ? 0 : 1;
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j - 1] + indicator
+                    );
+                }
+            }
+
+            const operations = [];
+            let i = a.length, j = b.length;
+            while (i > 0 || j > 0) {
+                if (i > 0 && j > 0 && matrix[i][j] === matrix[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)) {
+                    if (a[i - 1] !== b[j - 1]) {
+                        operations.unshift(`Sustituir '${a[i - 1]}' por '${b[j - 1]}'`);
+                    }
+                    i--; j--;
+                } else if (i > 0 && matrix[i][j] === matrix[i - 1][j] + 1) {
+                    operations.unshift(`Eliminar '${a[i - 1]}'`);
+                    i--;
+                } else if (j > 0 && matrix[i][j] === matrix[i][j - 1] + 1) {
+                    operations.unshift(`Insertar '${b[j - 1]}'`);
+                    j--;
+                }
+            }
+
+            return { distance: matrix[a.length][b.length], operations };
+        }
+
+        class Node {
+            constructor(point) {
+                this.point = point;
+                this.children = {};
+            }
+        }
+
+        class BKTree {
+            constructor(distanceFunc) {
+                this.root = null;
+                this.distanceFunc = distanceFunc;
+            }
+
+            add(point) {
+                if (this.root === null) {
+                    this.root = new Node(point);
+                } else {
+                    this._add(this.root, point);
+                }
+            }
+
+            _add(node, point) {
+                const dist = this.distanceFunc(node.point, point).distance;
+                if (node.children[dist] === undefined) {
+                    node.children[dist] = new Node(point);
+                } else {
+                    this._add(node.children[dist], point);
+                }
+            }
+
+            search(point, maxDistance) {
+                const results = [];
+                if (this.root !== null) {
+                    this._search(this.root, point, maxDistance, results);
+                }
+                return results;
+            }
+
+            _search(node, point, maxDistance, results) {
+                const result = this.distanceFunc(node.point, point);
+                const dist = result.distance;
+                if (dist <= maxDistance) {
+                    results.push({ point: node.point, distance: dist, operations: result.operations });
+                }
+                for (let d = Math.max(0, dist - maxDistance); d <= dist + maxDistance; d++) {
+                    if (node.children[d] !== undefined) {
+                        this._search(node.children[d], point, maxDistance, results);
+                    }
+                }
+            }
+        }
+
+        let names = [];
+        const tree = new BKTree(levenshteinDistance);
+
+        function addNameToTree(name) {
+            if (!names.includes(name)) {
+                names.push(name);
+                tree.add(name);
+                updateNameList();
+            }
+        }
+
+        function updateNameList() {
+            const nameList = document.getElementById('nameList');
+            nameList.innerHTML = names.length > 0 ? names.join(', ') : 'No hay nombres en la base de datos.';
+        }
+
+        document.getElementById('addNameButton').addEventListener('click', () => {
+            const newName = document.getElementById('newName').value.trim();
+            if (newName) {
+                addNameToTree(newName);
+                document.getElementById('newName').value = '';
+            }
+        });
+
+        document.getElementById('loadFileButton').addEventListener('click', () => {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const fileContent = event.target.result;
+                    const loadedNames = fileContent.split('\n').map(name => name.trim()).filter(name => name.length > 0);
+                    loadedNames.forEach(name => addNameToTree(name));
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        document.getElementById('saveFileButton').addEventListener('click', () => {
+            const fileContent = names.join('\n');
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'nombres.txt';
+            link.click();
+        });
+
+        function searchSimilarNames() {
+            const queryName = document.getElementById('searchName').value.trim();
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+
+            if (queryName === '') return;
+
+            const maxDistance = 2;
+            const similarNames = tree.search(queryName, maxDistance);
+
+            if (similarNames.length > 0) {
+                similarNames.forEach(result => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${result.point}</strong> (distancia: ${result.distance})<br>
+                                    Operaciones: ${result.operations.join(', ')}`;
+                    results.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = 'No se encontraron nombres similares.';
+                results.appendChild(li);
+            }
+        }
+
+        document.getElementById('searchName').addEventListener('input', searchSimilarNames);
+
+        updateNameList();
+    </script>
+</body>
+</html>

@@ -1,0 +1,3422 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2024-07-21T03:20:45Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/874303978",
+        "amenity": "restaurant",
+        "name": "San Santiago"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6840627,
+          -15.7646713
+        ]
+      },
+      "id": "node/874303978"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1764388329",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Inka Taquile"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6845737,
+          -15.76468
+        ]
+      },
+      "id": "node/1764388329"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1861602364",
+        "amenity": "restaurant",
+        "cuisine": "regional"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.684174,
+          -15.7635543
+        ]
+      },
+      "id": "node/1861602364"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1861719189",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "amenity": "restaurant",
+        "name": "Tulipan's"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.028148,
+          -15.8388064
+        ]
+      },
+      "id": "node/1861719189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2193472235",
+        "addr:floor": "2",
+        "addr:housenumber": "635",
+        "addr:street": "Jirón Lima",
+        "amenity": "restaurant",
+        "cuisine": "peruvian",
+        "name": "Mojsa",
+        "website": "https://mojsarestaurant.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0275175,
+          -15.8405096
+        ]
+      },
+      "id": "node/2193472235"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3019368107",
+        "amenity": "restaurant",
+        "name": "Quinta San Jerónimo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5890968,
+          -14.8947856
+        ]
+      },
+      "id": "node/3019368107"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3267313209",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6882082,
+          -15.7684831
+        ]
+      },
+      "id": "node/3267313209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3759067433",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "348",
+        "addr:postcode": "159",
+        "addr:street": "Jr. Lima",
+        "amenity": "restaurant",
+        "bar": "yes",
+        "cuisine": "regional,coffee_shop,crepe,chicken, dessert,fish,ice_cream,friture,pasta,sandwich,steak_house,cake",
+        "diet:vegetarian": "yes",
+        "email": "incabar1puno@hotmail.com",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Incabar",
+        "opening_hours": "Mo-Su 7:00-22:00",
+        "payment:american_express": "yes",
+        "payment:cash": "yes",
+        "payment:diners_club": "yes",
+        "payment:discover_card": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "payment:visa_electron": "yes",
+        "phone": "+51 51 368031",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.028112,
+          -15.838574
+        ]
+      },
+      "id": "node/3759067433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3762081362",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Restaurante la Villa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0127428,
+          -15.8580313
+        ]
+      },
+      "id": "node/3762081362"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3767897153",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "423",
+        "addr:street": "Jr. Lima",
+        "amenity": "restaurant",
+        "cuisine": "pizza;regional",
+        "email": "info@lacasona-restaurant.com",
+        "fax": "+51 51 351108",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "La Casona Restaurant",
+        "opening_hours": "Mo-Su 12:00-21:45",
+        "payment:american_express": "yes",
+        "payment:cash": "yes",
+        "payment:diners_club": "yes",
+        "payment:discover_card": "yes",
+        "payment:jcb": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "payment:visa_electron": "yes",
+        "phone": "+51 51 351108",
+        "smoking": "no",
+        "website": "http://www.lacasona-restaurant.com",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0279486,
+          -15.8391009
+        ]
+      },
+      "id": "node/3767897153"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3768335124",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "354",
+        "addr:street": "Jr. Libertad",
+        "amenity": "restaurant",
+        "cuisine": "fusion;traditional;café;pizza;pasta;international",
+        "email": "lachozadeoscar@hotmail.com",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Balcones de Puno",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "outdoor_seating": "yes",
+        "payment:american_express": "yes",
+        "payment:cash": "yes",
+        "payment:cryptocurrencies": "no",
+        "payment:diners_club": "yes",
+        "payment:electronic_purses": "no",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "payment:visa_electron": "yes",
+        "phone": "+51 51 365300",
+        "smoking": "separated",
+        "website": "http://www.balconesdepuno.com",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0278322,
+          -15.8389206
+        ]
+      },
+      "id": "node/3768335124"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3768335125",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "340",
+        "addr:street": "Jr. Libertad",
+        "amenity": "restaurant",
+        "cuisine": "fusion;roasted_chicken;traditional;café;pizza;pasta;international",
+        "email": "lachozadeoscar@hotmail.com",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "La choza de Oscar",
+        "opening_hours": "Mo-Su 13:00-22:30",
+        "payment:american_express": "yes",
+        "payment:cash": "yes",
+        "payment:cryptocurrencies": "no",
+        "payment:diners_club": "yes",
+        "payment:electronic_purses": "no",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "payment:visa_electron": "yes",
+        "phone": "+51 51351199",
+        "smoking": "no",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0277505,
+          -15.8389104
+        ]
+      },
+      "id": "node/3768335125"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3768335126",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "354",
+        "addr:street": "Jr. Puno",
+        "amenity": "restaurant",
+        "cuisine": "criolla;seviche",
+        "description": "Ceviche Restaurant",
+        "internet_access": "no",
+        "microbrewery": "no",
+        "name": "Sabor Criollo",
+        "opening_hours": "Mo-Sa 11:00-19:00",
+        "payment:cash": "yes",
+        "payment:credit_cards": "no",
+        "payment:cryptocurrencies": "no",
+        "payment:debit_cards": "no",
+        "payment:electronic_purses": "no",
+        "phone": "+51 982072157",
+        "smoking": "no",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.027358,
+          -15.8406144
+        ]
+      },
+      "id": "node/3768335126"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3769691587",
+        "addr:city": "Puno",
+        "addr:housenumber": "139",
+        "addr:postcode": "159",
+        "addr:street": "Pasaje Grau",
+        "amenity": "restaurant",
+        "capacity": "30",
+        "contact:facebook": "https://www.facebook.com/Lago-de-Flores-1433105750264197",
+        "cuisine": "italian;pizza;novo_andina",
+        "delivery": "no",
+        "diet:vegetarian": "yes",
+        "email": "david.condori.chambilla@gmail.com",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Lago de flores",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "payment:american_express": "yes",
+        "payment:cash": "yes",
+        "payment:diners_club": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "payment:visa_electron": "yes",
+        "phone": "+51 51 364135",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0277146,
+          -15.8395865
+        ]
+      },
+      "id": "node/3769691587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3769771343",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "327",
+        "addr:postcode": "159",
+        "addr:street": "Jr. Arequipa",
+        "amenity": "restaurant",
+        "capacity": "70",
+        "cuisine": "italian;mexican;pizza",
+        "delivery": "yes",
+        "email": "hjalmar17@hotmail.com",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Sunrise",
+        "opening_hours": "Mo-Su 12:00-23:00",
+        "payment:american_express": "yes",
+        "payment:bankaxess": "no",
+        "payment:cash": "yes",
+        "payment:diners_club": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "payment:visa_electron": "yes",
+        "phone": "+51 51 351159",
+        "takeaway": "yes",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0275309,
+          -15.8381785
+        ]
+      },
+      "id": "node/3769771343"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3769876410",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "318",
+        "addr:postcode": "159",
+        "addr:street": "Jr. Arequipa",
+        "amenity": "restaurant",
+        "capacity": "50",
+        "contact:facebook": "https://www.facebook.com/CANDELASPIZZABAR",
+        "cuisine": "pizza;pasta;coktels",
+        "delivery": "yes",
+        "name": "Candelas",
+        "opening_hours": "Mo-Su 17:00-23:59",
+        "payment:american_express": "yes",
+        "payment:cash": "yes",
+        "payment:diners_club": "yes",
+        "payment:discover_card": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "phone": "+51 51 631116",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0276763,
+          -15.8380968
+        ]
+      },
+      "id": "node/3769876410"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3769899606",
+        "addr:city": "Puno",
+        "addr:country": "PE",
+        "addr:housenumber": "339",
+        "addr:postcode": "159",
+        "addr:street": "Jr. Lima",
+        "amenity": "restaurant",
+        "capacity": "100",
+        "contact:facebook": "https://www.facebook.com/atajo.restaurante",
+        "cuisine": "regional;pizza;international;pasta;bar",
+        "delivery": "no",
+        "diet:vegetarian": "yes",
+        "email": "atajo_food@hotmail.com",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Atajo",
+        "opening_hours": "Mo-Sa 8:00-22:00",
+        "payment:american_express": "yes",
+        "payment:cash": "yes",
+        "payment:diners_club": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "payment:visa_electron": "yes",
+        "phone": "+51 51 352347",
+        "smoking": "no",
+        "takeaway": "yes",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0280757,
+          -15.8384111
+        ]
+      },
+      "id": "node/3769899606"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4112370990",
+        "addr:street": "Jr. Lima",
+        "amenity": "restaurant",
+        "name": "La Hacienda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0278042,
+          -15.8397422
+        ]
+      },
+      "id": "node/4112370990"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199097771",
+        "amenity": "restaurant",
+        "name": "Bahamas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0267102,
+          -15.839873
+        ]
+      },
+      "id": "node/4199097771"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199097805",
+        "addr:housenumber": "124",
+        "addr:street": "Jr. Moquegua",
+        "amenity": "restaurant",
+        "cuisine": "peruvian;local",
+        "name": "Buen Sabor",
+        "name:ja": "ブエンサボール"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0270275,
+          -15.8381369
+        ]
+      },
+      "id": "node/4199097805"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4279519295",
+        "amenity": "restaurant",
+        "name": "Quinta Marabu",
+        "phone": "+51951364945"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8680601,
+          -14.9168214
+        ]
+      },
+      "id": "node/4279519295"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4279550473",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Polleria La Parada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8642627,
+          -14.915334
+        ]
+      },
+      "id": "node/4279550473"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4281324666",
+        "addr:housenumber": "235",
+        "addr:street": "Jirón Ayacucho",
+        "amenity": "restaurant",
+        "name": "Las Tinajas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.864813,
+          -14.9142283
+        ]
+      },
+      "id": "node/4281324666"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4281326290",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Polleria La Gran Choza"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.86456,
+          -14.9154133
+        ]
+      },
+      "id": "node/4281326290"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4281339990",
+        "amenity": "restaurant",
+        "name": "El Asador"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8652271,
+          -14.9154708
+        ]
+      },
+      "id": "node/4281339990"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4285405351",
+        "amenity": "restaurant",
+        "name": "Restaurant Yago"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8677717,
+          -14.9165617
+        ]
+      },
+      "id": "node/4285405351"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4289447189",
+        "amenity": "restaurant",
+        "name": "Cevicheria Mareas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0276535,
+          -15.8414643
+        ]
+      },
+      "id": "node/4289447189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4293257380",
+        "amenity": "restaurant",
+        "name": "Sr. Rocotito"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1339305,
+          -15.4967556
+        ]
+      },
+      "id": "node/4293257380"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4293257438",
+        "amenity": "restaurant",
+        "name": "El Imperio"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.602786,
+          -15.6905571
+        ]
+      },
+      "id": "node/4293257438"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4297275055",
+        "amenity": "restaurant",
+        "name": "Restaurante Phutina"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8665244,
+          -14.9161949
+        ]
+      },
+      "id": "node/4297275055"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4308218934",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Salchipollo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8675385,
+          -14.9156307
+        ]
+      },
+      "id": "node/4308218934"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4315005323",
+        "amenity": "restaurant",
+        "name": "Las Puyas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8687386,
+          -14.9154721
+        ]
+      },
+      "id": "node/4315005323"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4315195889",
+        "addr:housenumber": "188",
+        "addr:street": "Pje. Choquehuanca 188",
+        "amenity": "restaurant",
+        "diet:vegan": "yes",
+        "email": "veganorganico@gmail.com",
+        "internet_access": "wlan",
+        "name": "Loving Hut Vegan",
+        "opening_hours": "Mo-Sa 09:00-19:00",
+        "operator": "Luz Rocio",
+        "phone": "+51-51353523",
+        "website": "http://lovinghut.com/pe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0248117,
+          -15.8386982
+        ]
+      },
+      "id": "node/4315195889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4316560821",
+        "amenity": "restaurant",
+        "name": "Quianta Restaurant Gaudy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1293878,
+          -15.4896548
+        ]
+      },
+      "id": "node/4316560821"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4324913456",
+        "amenity": "restaurant",
+        "name": "Mercado Bellavista"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0234387,
+          -15.8334622
+        ]
+      },
+      "id": "node/4324913456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4326923892",
+        "addr:housenumber": "239",
+        "addr:street": "Jr. Ancash",
+        "amenity": "restaurant",
+        "cuisine": "french;local",
+        "email": "latabledelinca@gmail.com",
+        "internet_access": "wlan",
+        "name": "La Table Del Inca",
+        "opening_hours": "Mo-Su 18:00-21:30",
+        "phone": "+51994659357"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0284314,
+          -15.8420245
+        ]
+      },
+      "id": "node/4326923892"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4332660327",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3664381,
+          -15.0413657
+        ]
+      },
+      "id": "node/4332660327"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4332959561",
+        "amenity": "restaurant",
+        "name": "Tio Juan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8887344,
+          -15.8929685
+        ]
+      },
+      "id": "node/4332959561"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4362671036",
+        "amenity": "restaurant",
+        "cuisine": "steak",
+        "name": "Vikingos - Medieval Grill"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1296217,
+          -15.494285
+        ]
+      },
+      "id": "node/4362671036"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4368384790",
+        "addr:housenumber": "418",
+        "addr:street": "Jr. Lima",
+        "amenity": "restaurant",
+        "cuisine": "sandwich;regional;breakfast;international;tea;local;coffee_shop;pizza;diner;italian_pizza",
+        "email": "tradicionesdelago2016@gmail.com",
+        "internet_access": "wlan",
+        "name": "tradiciones del lago",
+        "name:es": "tradiciones del lago",
+        "opening_hours": "Mo-Su 10:00-22:00",
+        "phone": "+51 51 209114",
+        "website": "http://www.tradiciondellago.com.pe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.028067,
+          -15.8392502
+        ]
+      },
+      "id": "node/4368384790"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4388504200",
+        "addr:housenumber": "204",
+        "addr:street": "Jirón La Mar",
+        "amenity": "restaurant",
+        "name": "El Caribe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1274302,
+          -15.4971008
+        ]
+      },
+      "id": "node/4388504200"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4388541874",
+        "addr:housenumber": "870",
+        "addr:street": "Jirón Tumbes Progreso",
+        "amenity": "restaurant",
+        "diet:vegetarian": "only",
+        "name": "Restaurant Vegetariano Natura Jampi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1305142,
+          -15.4919166
+        ]
+      },
+      "id": "node/4388541874"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4406326789",
+        "amenity": "restaurant",
+        "name:en": "Lots of S/.2 restaurants!"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0223422,
+          -15.8351946
+        ]
+      },
+      "id": "node/4406326789"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4407532089",
+        "amenity": "restaurant",
+        "name": "El Tambo",
+        "name:es": "El Tambo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3659675,
+          -15.3646558
+        ]
+      },
+      "id": "node/4407532089"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4457978607",
+        "addr:street": "Jr. Arequipa",
+        "amenity": "restaurant",
+        "cuisine": "chinese",
+        "name": "Chifa Nan Hua",
+        "name:es": "Chifa",
+        "name:ja": "南華酒家"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0274319,
+          -15.838743
+        ]
+      },
+      "id": "node/4457978607"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4494488599",
+        "amenity": "restaurant",
+        "name": "Restaurante Taquile",
+        "name:es": "Restaurante Taquile"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6915138,
+          -15.7512666
+        ]
+      },
+      "id": "node/4494488599"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4625938389",
+        "addr:street": "Jirón Bolivar",
+        "amenity": "restaurant",
+        "name": "REST. AREQUIPEÑA",
+        "name:es": "REST. AREQUIPEÑA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1326016,
+          -15.4946529
+        ]
+      },
+      "id": "node/4625938389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4638912591",
+        "amenity": "restaurant",
+        "name": "Chifan",
+        "name:zh": "山鸿酒家"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0257815,
+          -15.8396043
+        ]
+      },
+      "id": "node/4638912591"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4725244000",
+        "amenity": "restaurant",
+        "name": "Cevicheria Rico Norte",
+        "name:es": "Cevicheria Rico Norte"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0210602,
+          -15.8311026
+        ]
+      },
+      "id": "node/4725244000"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4743511459",
+        "addr:street": "Jr. Tacna",
+        "amenity": "restaurant",
+        "name": "La Cabaña",
+        "name:en": "La Cabaña",
+        "name:es": "La Cabaña"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0260212,
+          -15.8380893
+        ]
+      },
+      "id": "node/4743511459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4812004825",
+        "amenity": "restaurant",
+        "name": "local restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.020497,
+          -15.8381792
+        ]
+      },
+      "id": "node/4812004825"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4812005630",
+        "amenity": "restaurant",
+        "name": "local market"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0205249,
+          -15.8383588
+        ]
+      },
+      "id": "node/4812005630"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4833315922",
+        "addr:housenumber": "169;171",
+        "addr:street": "Jirón Fermín Arbulu",
+        "amenity": "restaurant",
+        "cuisine": "chinese",
+        "name": "Chifa Shanghai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0264504,
+          -15.8377336
+        ]
+      },
+      "id": "node/4833315922"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4833316821",
+        "addr:housenumber": "275",
+        "addr:street": "Jr. Tacna",
+        "amenity": "restaurant",
+        "cuisine": "peruvian",
+        "name": "Cafe Restaurant Chullpas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0260752,
+          -15.8382536
+        ]
+      },
+      "id": "node/4833316821"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4837224422",
+        "amenity": "restaurant",
+        "name": "Sabores peruanos",
+        "name:es": "Sabores peruanos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.024216,
+          -15.8452633
+        ]
+      },
+      "id": "node/4837224422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4871018421",
+        "addr:street": "Jr. Lima",
+        "amenity": "restaurant",
+        "cuisine": "pasta;italian_pizza;italian;pizza",
+        "internet_access": "wlan",
+        "name": "Pizza Andina",
+        "name:en": "Pizza Andina",
+        "name:es": "Pizza Andina"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0277871,
+          -15.83979
+        ]
+      },
+      "id": "node/4871018421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4888612224",
+        "amenity": "restaurant",
+        "cuisine": "barbecue",
+        "name": "Casa Grill",
+        "name:es": "Casa Grill"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0263406,
+          -15.839824
+        ]
+      },
+      "id": "node/4888612224"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4909774531",
+        "amenity": "restaurant",
+        "name": "El Rancho",
+        "name:es": "El Rancho"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0264726,
+          -15.8386145
+        ]
+      },
+      "id": "node/4909774531"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4909774532",
+        "amenity": "restaurant",
+        "name": "La Estancia",
+        "name:es": "La Estancia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0262456,
+          -15.8386846
+        ]
+      },
+      "id": "node/4909774532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4909782022",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Palitos",
+        "name:es": "Palitos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0259075,
+          -15.8372194
+        ]
+      },
+      "id": "node/4909782022"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4909782023",
+        "amenity": "restaurant",
+        "cuisine": "chinese",
+        "name": "Chifa Nan Hua",
+        "name:es": "Chifa Nan Hua",
+        "name:ja": "南華酒家"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0262874,
+          -15.8370213
+        ]
+      },
+      "id": "node/4909782023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4909782024",
+        "amenity": "restaurant",
+        "name": "Karol's",
+        "name:es": "Karol's",
+        "name:ja": "カロルス"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0264889,
+          -15.8365757
+        ]
+      },
+      "id": "node/4909782024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4909782027",
+        "amenity": "restaurant",
+        "name": "Pechugon",
+        "name:es": "Pechugon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0257746,
+          -15.8392465
+        ]
+      },
+      "id": "node/4909782027"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4909782122",
+        "amenity": "restaurant",
+        "name": "ElS Tablo",
+        "name:es": "ElS Tablo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0259086,
+          -15.8394164
+        ]
+      },
+      "id": "node/4909782122"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911699724",
+        "amenity": "restaurant",
+        "name": "Viko",
+        "name:es": "Viko"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0303115,
+          -15.8384561
+        ]
+      },
+      "id": "node/4911699724"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911699728",
+        "amenity": "restaurant",
+        "name": "Snoopy",
+        "name:es": "Snoopy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0261671,
+          -15.8400614
+        ]
+      },
+      "id": "node/4911699728"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911699729",
+        "amenity": "restaurant",
+        "name": "Remembranzas",
+        "name:es": "Remembranzas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0268579,
+          -15.8388467
+        ]
+      },
+      "id": "node/4911699729"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911699730",
+        "amenity": "restaurant",
+        "name": "Pizzeria Buho",
+        "name:es": "Pizzeria Buho"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0272121,
+          -15.8387574
+        ]
+      },
+      "id": "node/4911699730"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911699732",
+        "amenity": "restaurant",
+        "name": "Restaurant El Caribe",
+        "name:es": "Restaurant El Caribe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0269978,
+          -15.8369373
+        ]
+      },
+      "id": "node/4911699732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911699735",
+        "amenity": "restaurant",
+        "name": "Huajsapata",
+        "name:es": "Huajsapata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0279598,
+          -15.8372516
+        ]
+      },
+      "id": "node/4911699735"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911704121",
+        "amenity": "restaurant",
+        "name": "Ivan's",
+        "name:es": "Ivan's"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0290607,
+          -15.8375098
+        ]
+      },
+      "id": "node/4911704121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911704132",
+        "amenity": "restaurant",
+        "name": "Tacos Mexicanos",
+        "name:es": "Tacos Mexicanos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0285457,
+          -15.8371523
+        ]
+      },
+      "id": "node/4911704132"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911704524",
+        "addr:housenumber": "212",
+        "addr:street": "Jr. Moquegua",
+        "amenity": "restaurant",
+        "name": "Kollasuyo",
+        "name:es": "Kollasuyo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0267913,
+          -15.8390023
+        ]
+      },
+      "id": "node/4911704524"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911704525",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "El Rancho",
+        "name:es": "El Rancho"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0269804,
+          -15.8372523
+        ]
+      },
+      "id": "node/4911704525"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911704526",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Aqui me Quedo",
+        "name:es": "Aqui me Quedo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0269573,
+          -15.8370387
+        ]
+      },
+      "id": "node/4911704526"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911704528",
+        "amenity": "restaurant",
+        "cuisine": "chinese",
+        "name": "Virgen del Carmen",
+        "name:es": "Virgen del Carmen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0276979,
+          -15.8365898
+        ]
+      },
+      "id": "node/4911704528"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911704529",
+        "amenity": "restaurant",
+        "name": "Exotica",
+        "name:es": "Exotica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0285504,
+          -15.8369939
+        ]
+      },
+      "id": "node/4911704529"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4911705322",
+        "amenity": "restaurant",
+        "name": "La Cayma",
+        "name:es": "La Cayma"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0270478,
+          -15.8387202
+        ]
+      },
+      "id": "node/4911705322"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4913848021",
+        "amenity": "restaurant",
+        "name": "Pacifico",
+        "name:es": "Pacifico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0156702,
+          -15.8472396
+        ]
+      },
+      "id": "node/4913848021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4950445623",
+        "amenity": "restaurant",
+        "name": "El Roncho"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0275941,
+          -15.8374474
+        ]
+      },
+      "id": "node/4950445623"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4988089827",
+        "amenity": "restaurant",
+        "name": "El Almanecer II",
+        "name:es": "El Almanecer II"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0220742,
+          -15.8382013
+        ]
+      },
+      "id": "node/4988089827"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4993489822",
+        "amenity": "restaurant",
+        "name": "Apage"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.028603,
+          -15.8383334
+        ]
+      },
+      "id": "node/4993489822"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4995611424",
+        "amenity": "restaurant",
+        "cuisine": "peruvian",
+        "name": "La Wallatita",
+        "name:en": "Wallatita",
+        "name:es": "Wallatita"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0259809,
+          -15.8386423
+        ]
+      },
+      "id": "node/4995611424"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5000661722",
+        "amenity": "restaurant",
+        "name": "Chiuchi Polleria",
+        "name:en": "Chiuchi Polleria",
+        "name:es": "Chiuchi Polleria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0273467,
+          -15.8345808
+        ]
+      },
+      "id": "node/5000661722"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5000661724",
+        "addr:housenumber": "352",
+        "addr:street": "Jirón Ilave",
+        "amenity": "restaurant",
+        "cuisine": "peruvian",
+        "internet_access": "wlan",
+        "name": "Adobo Arequipeño",
+        "name:es": "Adobo Arequipeño",
+        "opening_hours": "Mo-Su 09:00-17:00",
+        "phone": "+51 51 209895"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0298345,
+          -15.8406525
+        ]
+      },
+      "id": "node/5000661724"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5000842431",
+        "amenity": "restaurant",
+        "name": "Restaurant La Florida",
+        "name:es": "Restaurant Virgen de Guadelupe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7879636,
+          -14.6088633
+        ]
+      },
+      "id": "node/5000842431"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5002140141",
+        "amenity": "restaurant",
+        "name": "Polleria El Rey",
+        "name:es": "Polleria El Rey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3664294,
+          -15.0417786
+        ]
+      },
+      "id": "node/5002140141"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5002265923",
+        "amenity": "restaurant",
+        "name": "Chifa Sol y Luna",
+        "name:es": "Chifa Sol y Luna"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3662014,
+          -15.041815
+        ]
+      },
+      "id": "node/5002265923"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5002266221",
+        "amenity": "restaurant",
+        "name": "Restaurant Sr. de Huanca",
+        "name:es": "Restaurant Sr. de Huanca"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3664814,
+          -15.0415688
+        ]
+      },
+      "id": "node/5002266221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003922235",
+        "amenity": "restaurant",
+        "brand": "Norky's",
+        "brand:wikidata": "Q109378465",
+        "cuisine": "peruvian",
+        "name": "Norky's",
+        "takeaway": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1301402,
+          -15.4954138
+        ]
+      },
+      "id": "node/5003922235"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003922923",
+        "amenity": "restaurant",
+        "brand": "Pizza Hut",
+        "brand:wikidata": "Q191615",
+        "cuisine": "pizza",
+        "name": "Pizza Hut",
+        "name:es": "Pizza Hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1301926,
+          -15.4953811
+        ]
+      },
+      "id": "node/5003922923"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003922925",
+        "amenity": "restaurant",
+        "name": "Rustica",
+        "name:es": "Rustica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1304068,
+          -15.4953652
+        ]
+      },
+      "id": "node/5003922925"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003932429",
+        "amenity": "restaurant",
+        "brand": "Norky's",
+        "brand:wikidata": "Q109378465",
+        "cuisine": "peruvian",
+        "name": "Norky's",
+        "takeaway": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1298379,
+          -15.4959112
+        ]
+      },
+      "id": "node/5003932429"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003942637",
+        "amenity": "restaurant",
+        "name": "Polleria Hot Chicken",
+        "name:es": "Polleria Hot Chicken"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1361469,
+          -15.4893118
+        ]
+      },
+      "id": "node/5003942637"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010421022",
+        "amenity": "restaurant",
+        "name": "Chifa al Paso El Dorado",
+        "name:es": "Chifa al Paso El Dorado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6382853,
+          -16.0873185
+        ]
+      },
+      "id": "node/5010421022"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010421026",
+        "amenity": "restaurant",
+        "name": "Polleria Mi Casa Rustica",
+        "name:es": "Polleria Mi Casa Rustica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6391089,
+          -16.0866801
+        ]
+      },
+      "id": "node/5010421026"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010421028",
+        "amenity": "restaurant",
+        "name": "Polleria Arcángel",
+        "name:es": "Polleria Arcángel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6391946,
+          -16.0869707
+        ]
+      },
+      "id": "node/5010421028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010564024",
+        "amenity": "restaurant",
+        "name": "Polleria El Misti",
+        "name:es": "Polleria El Misti"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6359696,
+          -16.0811132
+        ]
+      },
+      "id": "node/5010564024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010564330",
+        "amenity": "restaurant",
+        "name": "Polleria Golden Chicken",
+        "name:es": "Polleria Golden Chicken"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6387769,
+          -16.0863104
+        ]
+      },
+      "id": "node/5010564330"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010564422",
+        "amenity": "restaurant",
+        "name": "Polleria Central",
+        "name:es": "Polleria Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6388199,
+          -16.0838922
+        ]
+      },
+      "id": "node/5010564422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5015491221",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6866249,
+          -15.7543896
+        ]
+      },
+      "id": "node/5015491221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5022305033",
+        "amenity": "restaurant",
+        "name": "Playa de Juli",
+        "name:es": "Playa de Juli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.4606262,
+          -16.2032387
+        ]
+      },
+      "id": "node/5022305033"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5024807821",
+        "amenity": "restaurant",
+        "name": "Aroma",
+        "name:es": "Aroma"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6878392,
+          -14.5127928
+        ]
+      },
+      "id": "node/5024807821"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5123313221",
+        "addr:housenumber": "342",
+        "addr:street": "Lima",
+        "amenity": "restaurant",
+        "internet_access": "wlan",
+        "name": "Colors Restaurant",
+        "opening_hours": "Mo-Su 10:00-22:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0281434,
+          -15.8384454
+        ]
+      },
+      "id": "node/5123313221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166659205",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3494561,
+          -15.6425006
+        ]
+      },
+      "id": "node/5166659205"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662304",
+        "amenity": "restaurant",
+        "name": "Eudy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1440303,
+          -15.4919356
+        ]
+      },
+      "id": "node/5166662304"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662628",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8552317,
+          -16.7616217
+        ]
+      },
+      "id": "node/5166662628"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662846",
+        "amenity": "restaurant",
+        "name": "A fuego lento Polleria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.1035226,
+          -16.496231
+        ]
+      },
+      "id": "node/5166662846"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662907",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1336983,
+          -15.4944167
+        ]
+      },
+      "id": "node/5166662907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166663207",
+        "amenity": "restaurant",
+        "description": "Comida tradicional"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.10259,
+          -16.49683
+        ]
+      },
+      "id": "node/5166663207"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166663221",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7167846,
+          -16.741919
+        ]
+      },
+      "id": "node/5166663221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5173957456",
+        "amenity": "restaurant",
+        "name": "Gusto y sabor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9533024,
+          -14.769467
+        ]
+      },
+      "id": "node/5173957456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5303126422",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6866734,
+          -15.7543545
+        ]
+      },
+      "id": "node/5303126422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5333992992",
+        "amenity": "restaurant",
+        "name": "Quinta Playa Azul"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0017506,
+          -15.8233445
+        ]
+      },
+      "id": "node/5333992992"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5333992993",
+        "amenity": "restaurant",
+        "name": "quinta Sombreritos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0015418,
+          -15.8235198
+        ]
+      },
+      "id": "node/5333992993"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5352792822",
+        "addr:housenumber": "661",
+        "addr:postcode": "051",
+        "addr:street": "Jr. Lima",
+        "amenity": "restaurant",
+        "cuisine": "sandwich;breakfast;tea;coffee_shop;noodles;pasta;pancake;pizza;peruvian;diner",
+        "email": "incabarsalon@hotmail.com",
+        "internet_access": "wlan",
+        "name": "Incabar Salon",
+        "opening_hours": "Mo-Su 09:00-22:00",
+        "phone": "+51 51 366218"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0275433,
+          -15.8405619
+        ]
+      },
+      "id": "node/5352792822"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5451253522",
+        "amenity": "restaurant",
+        "cuisine": "pizza;peruvian",
+        "name": "Quni Wasi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0274413,
+          -15.8411597
+        ]
+      },
+      "id": "node/5451253522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5499179022",
+        "amenity": "restaurant",
+        "name": "hatuchay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1349558,
+          -15.4945498
+        ]
+      },
+      "id": "node/5499179022"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5642557926",
+        "addr:street": "Jr. Coronel M. Rios",
+        "amenity": "restaurant",
+        "name": "Pizzeria Quechuas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.028987,
+          -15.8348942
+        ]
+      },
+      "id": "node/5642557926"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5642577221",
+        "addr:street": "Jr. Independencia",
+        "amenity": "restaurant",
+        "name": "Paque Mas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0288927,
+          -15.8347389
+        ]
+      },
+      "id": "node/5642577221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5642865523",
+        "addr:street": "Jr. Moquegua",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Tamys"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0260211,
+          -15.8405665
+        ]
+      },
+      "id": "node/5642865523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5642865621",
+        "addr:street": "Jr. Tacna",
+        "amenity": "restaurant",
+        "name": "La Huerta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0255735,
+          -15.839874
+        ]
+      },
+      "id": "node/5642865621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5642865622",
+        "addr:street": "Jr. Deustua",
+        "amenity": "restaurant",
+        "name": "Urban"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0275591,
+          -15.8401692
+        ]
+      },
+      "id": "node/5642865622"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5642865721",
+        "addr:street": "Jr. Tacna",
+        "amenity": "restaurant",
+        "name": "Tommi's"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0255992,
+          -15.8398046
+        ]
+      },
+      "id": "node/5642865721"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5642865723",
+        "addr:street": "Jr. Puno",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Big Chicken"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0258729,
+          -15.8401832
+        ]
+      },
+      "id": "node/5642865723"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5683032428",
+        "addr:housenumber": "315",
+        "addr:street": "Jirón Loreto",
+        "amenity": "restaurant",
+        "diet:vegetarian": "yes",
+        "name": "Nutrición y Dietas - Clínica Americana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1325154,
+          -15.4978997
+        ]
+      },
+      "id": "node/5683032428"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5743700821",
+        "amenity": "restaurant",
+        "name": "Remix Pizzeria Cafe and Bar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0287296,
+          -15.8412574
+        ]
+      },
+      "id": "node/5743700821"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5810788759",
+        "amenity": "restaurant",
+        "cuisine": "peruvian",
+        "name": "Doña Estelita"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3670836,
+          -15.3645124
+        ]
+      },
+      "id": "node/5810788759"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5839729593",
+        "amenity": "restaurant",
+        "cuisine": "fish;lamb",
+        "name": "Restaurant Sabor Arequipeño"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6036093,
+          -15.6922589
+        ]
+      },
+      "id": "node/5839729593"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5839879485",
+        "amenity": "restaurant",
+        "name": "Ukuku's Restaurant Pizzeria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0276334,
+          -15.839567
+        ]
+      },
+      "id": "node/5839879485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5842469537",
+        "amenity": "restaurant",
+        "name": "Flor de Rosas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6882018,
+          -15.7522729
+        ]
+      },
+      "id": "node/5842469537"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5889185331",
+        "amenity": "restaurant",
+        "name": "Hi Almuerzo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9293422,
+          -15.4415093
+        ]
+      },
+      "id": "node/5889185331"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6019174285",
+        "amenity": "restaurant",
+        "cuisine": "local"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0159125,
+          -15.8358908
+        ]
+      },
+      "id": "node/6019174285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6116944785",
+        "amenity": "restaurant",
+        "name": "Monto de Menú cuesta Soles 2.50"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0223812,
+          -15.8349909
+        ]
+      },
+      "id": "node/6116944785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6217257887",
+        "amenity": "restaurant",
+        "cuisine": "chicken"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7606243,
+          -15.2042155
+        ]
+      },
+      "id": "node/6217257887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6217257889",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.5003134,
+          -15.3607697
+        ]
+      },
+      "id": "node/6217257889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6217274288",
+        "amenity": "restaurant",
+        "cuisine": "italian_pizza",
+        "name": "Dely Pizzas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1328281,
+          -15.493978
+        ]
+      },
+      "id": "node/6217274288"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6279842285",
+        "addr:street": "Jirón Loreto",
+        "amenity": "restaurant",
+        "cuisine": "chicken;pizza",
+        "internet_access": "wlan",
+        "name": "Pizzería Tumi 2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1314633,
+          -15.4967966
+        ]
+      },
+      "id": "node/6279842285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6296094538",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.4655204,
+          -14.3225978
+        ]
+      },
+      "id": "node/6296094538"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6334109984",
+        "amenity": "restaurant",
+        "cuisine": "regional;pizza",
+        "name": "Pacha"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0283803,
+          -15.841111
+        ]
+      },
+      "id": "node/6334109984"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6334110590",
+        "amenity": "restaurant",
+        "name": "Wayki’s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0285034,
+          -15.8411567
+        ]
+      },
+      "id": "node/6334110590"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6334480305",
+        "amenity": "restaurant",
+        "name": "Wiñay Titi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.027885,
+          -15.8441189
+        ]
+      },
+      "id": "node/6334480305"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6441130804",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3462194,
+          -15.8016726
+        ]
+      },
+      "id": "node/6441130804"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6441268314",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0931141,
+          -16.2443063
+        ]
+      },
+      "id": "node/6441268314"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6463733716",
+        "amenity": "restaurant",
+        "cuisine": "pizza",
+        "name": "Pizeria Rustica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0204136,
+          -15.847897
+        ]
+      },
+      "id": "node/6463733716"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6463733718",
+        "amenity": "restaurant",
+        "name": "Parador Chicken"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0206924,
+          -15.8445074
+        ]
+      },
+      "id": "node/6463733718"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6463733719",
+        "amenity": "restaurant",
+        "name": "Polleria Magda's"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0220692,
+          -15.8448499
+        ]
+      },
+      "id": "node/6463733719"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6463733720",
+        "amenity": "restaurant",
+        "name": "Natur Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0225237,
+          -15.8448295
+        ]
+      },
+      "id": "node/6463733720"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6463733721",
+        "amenity": "restaurant",
+        "name": "Local de Eventos Killay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0247012,
+          -15.8460586
+        ]
+      },
+      "id": "node/6463733721"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6463733997",
+        "amenity": "restaurant",
+        "name": "Restaurante Criollo El Chef Linguini"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0209026,
+          -15.8456713
+        ]
+      },
+      "id": "node/6463733997"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6463738887",
+        "amenity": "restaurant",
+        "name": "Pechugon Polleria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0200381,
+          -15.846695
+        ]
+      },
+      "id": "node/6463738887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6465861585",
+        "amenity": "restaurant",
+        "name": "Machu pizza"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0269882,
+          -15.8402225
+        ]
+      },
+      "id": "node/6465861585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6484134289",
+        "amenity": "restaurant",
+        "name": "La Receta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0275755,
+          -15.8405234
+        ]
+      },
+      "id": "node/6484134289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6511985985",
+        "amenity": "restaurant",
+        "name": "Pushka"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0288065,
+          -15.8398102
+        ]
+      },
+      "id": "node/6511985985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514193406",
+        "amenity": "restaurant",
+        "name": "Delicar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.023265,
+          -15.8364301
+        ]
+      },
+      "id": "node/6514193406"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514194112",
+        "amenity": "restaurant",
+        "name": "Pinos Brass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0276098,
+          -15.8373975
+        ]
+      },
+      "id": "node/6514194112"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514194117",
+        "amenity": "restaurant",
+        "name": "Pollos Brass"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0234719,
+          -15.8345446
+        ]
+      },
+      "id": "node/6514194117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514194118",
+        "amenity": "restaurant",
+        "name": "Restaurant don Juanito"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0234327,
+          -15.8360426
+        ]
+      },
+      "id": "node/6514194118"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514194119",
+        "amenity": "restaurant",
+        "name": "El Vecino"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0233963,
+          -15.8365625
+        ]
+      },
+      "id": "node/6514194119"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514194120",
+        "amenity": "restaurant",
+        "name": "Cevicheria Puerto Grau"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0229677,
+          -15.837331
+        ]
+      },
+      "id": "node/6514194120"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514194193",
+        "amenity": "restaurant",
+        "name": "Puerto Eten"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0285981,
+          -15.8374139
+        ]
+      },
+      "id": "node/6514194193"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6514194195",
+        "amenity": "restaurant",
+        "name": "Polleria Haytazo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0232283,
+          -15.8365607
+        ]
+      },
+      "id": "node/6514194195"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6538472285",
+        "amenity": "restaurant",
+        "name": "pollo a la brasa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0259331,
+          -15.83948
+        ]
+      },
+      "id": "node/6538472285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6540918185",
+        "amenity": "restaurant",
+        "name": "el tumi pizzeria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0279696,
+          -15.838953
+        ]
+      },
+      "id": "node/6540918185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6693776187",
+        "amenity": "restaurant",
+        "name": "Colors"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0281529,
+          -15.8385101
+        ]
+      },
+      "id": "node/6693776187"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6831758343",
+        "amenity": "restaurant",
+        "description": "Pollo a la brasa (S/6.5 el 1/8) y broaster (S/7 el 1/8) con papas fritas, sopa y buffet de ensaladas.",
+        "name": "Copacabana Chicken"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0249056,
+          -15.8367245
+        ]
+      },
+      "id": "node/6831758343"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7003369985",
+        "addr:housenumber": "141",
+        "addr:postcode": "21001",
+        "addr:street": "Jirón Arequipa",
+        "amenity": "restaurant",
+        "contact:facebook": "https://www.facebook.com/crepecita3812/",
+        "cuisine": "crepe;pancake",
+        "email": "crepecita3812@gmail.com",
+        "name": "Crepecita 3812",
+        "name:en": "Pancake",
+        "name:fr": "Crepes",
+        "opening_hours": "Mo-Fr 13:30-20:30; Sa 14:00-20:30",
+        "phone": "+51967879727"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0278671,
+          -15.8370014
+        ]
+      },
+      "id": "node/7003369985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7087313186",
+        "amenity": "restaurant",
+        "name": "Coca Restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6883595,
+          -15.7680549
+        ]
+      },
+      "id": "node/7087313186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7159165885",
+        "addr:housenumber": "212",
+        "addr:street": "Jirón Moquegua",
+        "amenity": "restaurant",
+        "cuisine": "local",
+        "name": "Manos pureñas",
+        "name:en": "Manos Pureñas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0267815,
+          -15.838915
+        ]
+      },
+      "id": "node/7159165885"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7173704785",
+        "addr:street": "Jirón Lambayeque",
+        "amenity": "restaurant",
+        "cuisine": "local",
+        "name": "Sumac"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0299091,
+          -15.8384605
+        ]
+      },
+      "id": "node/7173704785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7173704787",
+        "addr:street": "Jirón Lambayeque",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Gringatos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0294694,
+          -15.8385016
+        ]
+      },
+      "id": "node/7173704787"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7196051509",
+        "amenity": "restaurant",
+        "description": "coffee restaurant. cheese, yogourt.... possible to camp inside for cyclists",
+        "name": "Moyandina"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6649383,
+          -14.8320383
+        ]
+      },
+      "id": "node/7196051509"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7882344718",
+        "amenity": "restaurant",
+        "name": "La Chabuca"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7864807,
+          -14.6090779
+        ]
+      },
+      "id": "node/7882344718"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7882344719",
+        "amenity": "restaurant",
+        "name": "Alexander"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7885145,
+          -14.6086297
+        ]
+      },
+      "id": "node/7882344719"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7882344720",
+        "addr:city": "Santa Rosa",
+        "addr:housenumber": "215",
+        "addr:neighbourhood": "San Miguel",
+        "addr:street": "Cusco",
+        "amenity": "restaurant",
+        "cuisine": "chicken",
+        "name": "Polleria la Fonda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7866761,
+          -14.608903
+        ]
+      },
+      "id": "node/7882344720"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9201331918",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6792942,
+          -15.7876485
+        ]
+      },
+      "id": "node/9201331918"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9650393891",
+        "addr:city": "Macusani",
+        "addr:housenumber": "503",
+        "addr:neighbourhood": "Barrio Central",
+        "addr:postcode": "20023",
+        "addr:state": "Puno",
+        "addr:street": "Jirón Plaza 28 de Julio",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Polleria Pistolitas",
+        "opening_hours": "Mo-Su 09:00-21:00",
+        "opening_hours:covid19": "Mo-Sa 08:00-20:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4315992,
+          -14.0685745
+        ]
+      },
+      "id": "node/9650393891"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9993410118",
+        "amenity": "restaurant",
+        "name": "Restaurante San Francisco"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0925323,
+          -16.2432475
+        ]
+      },
+      "id": "node/9993410118"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10043684802",
+        "addr:street": "Jirón Libertad",
+        "amenity": "restaurant",
+        "name": "La Cascada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0263583,
+          -15.8386144
+        ]
+      },
+      "id": "node/10043684802"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10951354105",
+        "amenity": "restaurant",
+        "cuisine": "burger;coffee_shop;sandwich",
+        "name": "Amaru Wasi",
+        "name:es": "Cheq'atoro - Amaru Wasi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3532398,
+          -15.072823
+        ]
+      },
+      "id": "node/10951354105"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11026789825",
+        "addr:city": "Puno",
+        "addr:housenumber": "651",
+        "addr:neighbourhood": "Bellavista",
+        "addr:street": "Avenida Floral",
+        "amenity": "restaurant",
+        "contact:facebook": "https://www.facebook.com/JCLT651/",
+        "cuisine": "peruvian",
+        "name": "Casa del Sabor - Bunker",
+        "outdoor_seating": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0210662,
+          -15.8311053
+        ]
+      },
+      "id": "node/11026789825"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11055710305",
+        "amenity": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9820193,
+          -15.1079634
+        ]
+      },
+      "id": "node/11055710305"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11238337037",
+        "addr:street": "Jirón 25 de Diciembre",
+        "amenity": "restaurant",
+        "name": "Ruphaq Grill BBQ",
+        "opening_hours": "Su-Sa 13:00-21:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5909424,
+          -14.8842283
+        ]
+      },
+      "id": "node/11238337037"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11430223369",
+        "amenity": "restaurant",
+        "name": "Bianca Pizza"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0274721,
+          -15.8401328
+        ]
+      },
+      "id": "node/11430223369"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11529025869",
+        "amenity": "restaurant",
+        "name": "kankacho ayavireño"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0259898,
+          -15.8386177
+        ]
+      },
+      "id": "node/11529025869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11529037869",
+        "amenity": "restaurant",
+        "name": "chicharroneria la red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0312491,
+          -15.8385829
+        ]
+      },
+      "id": "node/11529037869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11937253570",
+        "amenity": "restaurant",
+        "name:en": "Pizzeria Andina"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.027601,
+          -15.8389245
+        ]
+      },
+      "id": "node/11937253570"
+    }
+  ]
+}

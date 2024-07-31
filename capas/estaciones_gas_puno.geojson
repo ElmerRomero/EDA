@@ -1,0 +1,1962 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2024-07-21T03:25:47Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/874303952",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.982534,
+          -15.860981
+        ]
+      },
+      "id": "node/874303952"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/874303988",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.993186,
+          -15.8643685
+        ]
+      },
+      "id": "node/874303988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/874430109",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3670193,
+          -15.0393636
+        ]
+      },
+      "id": "node/874430109"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1477959509",
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "name": "PetroPerú",
+        "name:es": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5876507,
+          -14.8946675
+        ]
+      },
+      "id": "node/1477959509"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1477959520",
+        "amenity": "fuel",
+        "brand": "Petro-Peru",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5847636,
+          -14.904709
+        ]
+      },
+      "id": "node/1477959520"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2827493269",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.1067325,
+          -16.2503557
+        ]
+      },
+      "id": "node/2827493269"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161791652",
+        "amenity": "fuel",
+        "name": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1218708,
+          -15.4924057
+        ]
+      },
+      "id": "node/3161791652"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161791653",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1098917,
+          -15.5483555
+        ]
+      },
+      "id": "node/3161791653"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161791654",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1019585,
+          -15.565565
+        ]
+      },
+      "id": "node/3161791654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161799230",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2231376,
+          -15.3134658
+        ]
+      },
+      "id": "node/3161799230"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161799231",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2209558,
+          -15.3136796
+        ]
+      },
+      "id": "node/3161799231"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161799232",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1846827,
+          -15.3388303
+        ]
+      },
+      "id": "node/3161799232"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161799233",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1526044,
+          -15.4033136
+        ]
+      },
+      "id": "node/3161799233"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161799758",
+        "amenity": "fuel",
+        "compressed_air": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.795461,
+          -14.6068251
+        ]
+      },
+      "id": "node/3161799758"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800021",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1447272,
+          -15.4250601
+        ]
+      },
+      "id": "node/3161800021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800022",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1436956,
+          -15.4282242
+        ]
+      },
+      "id": "node/3161800022"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800023",
+        "amenity": "fuel",
+        "name": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1171005,
+          -15.5050905
+        ]
+      },
+      "id": "node/3161800023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800024",
+        "amenity": "fuel",
+        "name": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1095965,
+          -15.5260294
+        ]
+      },
+      "id": "node/3161800024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800162",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6010434,
+          -14.8775394
+        ]
+      },
+      "id": "node/3161800162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800163",
+        "amenity": "fuel",
+        "name": "Grifo Ayaviri",
+        "name:es": "Grifo Ayaviri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6043062,
+          -14.8808711
+        ]
+      },
+      "id": "node/3161800163"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800364",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1410771,
+          -15.4357297
+        ]
+      },
+      "id": "node/3161800364"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800365",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1409915,
+          -15.452328
+        ]
+      },
+      "id": "node/3161800365"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800366",
+        "amenity": "fuel",
+        "name": "Grifo Unidos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.14056,
+          -15.4555286
+        ]
+      },
+      "id": "node/3161800366"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3161800370",
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1014344,
+          -15.5700081
+        ]
+      },
+      "id": "node/3161800370"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3170922242",
+        "amenity": "fuel",
+        "name": "Grifo merma",
+        "name:es": "Grifo merma"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6363082,
+          -16.0917901
+        ]
+      },
+      "id": "node/3170922242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3170926158",
+        "amenity": "fuel",
+        "name": "Grifo palomo",
+        "name:es": "Grifo palomo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6528629,
+          -16.080477
+        ]
+      },
+      "id": "node/3170926158"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3170926159",
+        "amenity": "fuel",
+        "name": "Grifo huanca",
+        "name:es": "Grifo huanca"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6468097,
+          -16.0831219
+        ]
+      },
+      "id": "node/3170926159"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3170927010",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7918081,
+          -15.9777757
+        ]
+      },
+      "id": "node/3170927010"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3170927340",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7990346,
+          -15.9710705
+        ]
+      },
+      "id": "node/3170927340"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3170927341",
+        "amenity": "fuel",
+        "name": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.4820076,
+          -16.2196946
+        ]
+      },
+      "id": "node/3170927341"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3442283299",
+        "amenity": "fuel",
+        "name": "Grifo Continental"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1426887,
+          -15.4313481
+        ]
+      },
+      "id": "node/3442283299"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3739254355",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1634029,
+          -15.5059855
+        ]
+      },
+      "id": "node/3739254355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3739254356",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1659445,
+          -15.5077506
+        ]
+      },
+      "id": "node/3739254356"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3761708696",
+        "amenity": "fuel",
+        "brand": "PetroPeru",
+        "fuel:diesel": "yes",
+        "fuel:octane_84": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0090543,
+          -15.8566999
+        ]
+      },
+      "id": "node/3761708696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3945068339",
+        "amenity": "fuel",
+        "brand": "PetroPeru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9970843,
+          -15.8647855
+        ]
+      },
+      "id": "node/3945068339"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4195313988",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3847982,
+          -13.1207896
+        ]
+      },
+      "id": "node/4195313988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4195403293",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3234519,
+          -14.5805367
+        ]
+      },
+      "id": "node/4195403293"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199043278",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1635679,
+          -15.3795761
+        ]
+      },
+      "id": "node/4199043278"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199043750",
+        "amenity": "fuel",
+        "name": "Petrocentro Melgar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1656047,
+          -15.3754808
+        ]
+      },
+      "id": "node/4199043750"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199045879",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1347583,
+          -15.481535
+        ]
+      },
+      "id": "node/4199045879"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199045880",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1305269,
+          -15.4808748
+        ]
+      },
+      "id": "node/4199045880"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199070750",
+        "amenity": "fuel",
+        "name": "Repsol"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1072381,
+          -15.5542337
+        ]
+      },
+      "id": "node/4199070750"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4199071633",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1133188,
+          -15.539259
+        ]
+      },
+      "id": "node/4199071633"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214681855",
+        "amenity": "fuel",
+        "name": "Grifo Quenaya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6504878,
+          -16.0814568
+        ]
+      },
+      "id": "node/4214681855"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214684535",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7926719,
+          -15.9764712
+        ]
+      },
+      "id": "node/4214684535"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4214691747",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0123243,
+          -15.8550964
+        ]
+      },
+      "id": "node/4214691747"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4219863518",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0102874,
+          -15.8731754
+        ]
+      },
+      "id": "node/4219863518"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4283506896",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8593326,
+          -14.9139586
+        ]
+      },
+      "id": "node/4283506896"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4286869280",
+        "amenity": "fuel",
+        "name": "Puma",
+        "opening_hours": "24/7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0708861,
+          -15.4245587
+        ]
+      },
+      "id": "node/4286869280"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4293257856",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6022445,
+          -15.6951785
+        ]
+      },
+      "id": "node/4293257856"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4293903621",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1078408,
+          -15.4655894
+        ]
+      },
+      "id": "node/4293903621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4295478813",
+        "amenity": "fuel",
+        "name": "PetroPerú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9820904,
+          -15.3013992
+        ]
+      },
+      "id": "node/4295478813"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4295479085",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.072473,
+          -15.4257466
+        ]
+      },
+      "id": "node/4295479085"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4295479262",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0580757,
+          -15.3818118
+        ]
+      },
+      "id": "node/4295479262"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4295479330",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0836756,
+          -15.4383637
+        ]
+      },
+      "id": "node/4295479330"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4295479331",
+        "amenity": "fuel",
+        "name": "Petro Perú"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0870074,
+          -15.4419258
+        ]
+      },
+      "id": "node/4295479331"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4295480515",
+        "amenity": "fuel",
+        "name": "Grifo Pedro Ande"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.100453,
+          -15.459037
+        ]
+      },
+      "id": "node/4295480515"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4308218937",
+        "amenity": "fuel",
+        "name": "Los Angeles"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8585071,
+          -14.9137414
+        ]
+      },
+      "id": "node/4308218937"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4316561234",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1336226,
+          -15.4865037
+        ]
+      },
+      "id": "node/4316561234"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4316563396",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1541808,
+          -15.5016781
+        ]
+      },
+      "id": "node/4316563396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4332971924",
+        "amenity": "fuel",
+        "name": "Robhi Grifos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1104036,
+          -15.4700466
+        ]
+      },
+      "id": "node/4332971924"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4333137169",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8638645,
+          -14.8932103
+        ]
+      },
+      "id": "node/4333137169"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4334350395",
+        "amenity": "fuel",
+        "name": "Pecsa",
+        "name:en": "Pecsa",
+        "name:es": "Pecsa",
+        "name:fr": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.142649,
+          -15.4844455
+        ]
+      },
+      "id": "node/4334350395"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4341594140",
+        "amenity": "fuel",
+        "name": "Grifo Roy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.5316529,
+          -14.6778261
+        ]
+      },
+      "id": "node/4341594140"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4354675404",
+        "amenity": "fuel",
+        "name": "Grifo San Francisco"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.191651,
+          -14.9022939
+        ]
+      },
+      "id": "node/4354675404"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4354677790",
+        "amenity": "fuel",
+        "name": "Grifo Santa Cruz"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1912126,
+          -14.8983901
+        ]
+      },
+      "id": "node/4354677790"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4385367980",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0184504,
+          -15.8437156
+        ]
+      },
+      "id": "node/4385367980"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4388501571",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1329436,
+          -15.4912603
+        ]
+      },
+      "id": "node/4388501571"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4407574193",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.7596512,
+          -14.8598223
+        ]
+      },
+      "id": "node/4407574193"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4886704621",
+        "amenity": "fuel",
+        "name": "Petroperu",
+        "name:es": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3486908,
+          -15.7908775
+        ]
+      },
+      "id": "node/4886704621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5002050223",
+        "amenity": "fuel",
+        "name": "Grifos M&G",
+        "name:es": "Grifos M&G"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5867504,
+          -14.8962807
+        ]
+      },
+      "id": "node/5002050223"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5002051124",
+        "amenity": "fuel",
+        "brand": "PetroPerú",
+        "brand:wikidata": "Q2506390",
+        "name": "PetroPerú",
+        "name:es": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.603594,
+          -14.8766056
+        ]
+      },
+      "id": "node/5002051124"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003636932",
+        "amenity": "fuel",
+        "brand": "Repsol",
+        "brand:wikidata": "Q174747",
+        "brand:wikipedia": "es:Repsol",
+        "name": "Repsol",
+        "name:es": "Repsol"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2054714,
+          -15.3142713
+        ]
+      },
+      "id": "node/5003636932"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003636933",
+        "amenity": "fuel",
+        "name": "Servicentro Nuevo Mundo",
+        "name:es": "Servicentro Nuevo Mundo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1839781,
+          -15.3399276
+        ]
+      },
+      "id": "node/5003636933"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003636935",
+        "amenity": "fuel",
+        "name": "Grifo Coorp. Ramos",
+        "name:es": "Grifo Coorp. Ramos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1624356,
+          -15.3816067
+        ]
+      },
+      "id": "node/5003636935"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003636936",
+        "amenity": "fuel",
+        "name": "PetroPerú Grifo Asia",
+        "name:es": "Petroperu Grifo Asia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1501691,
+          -15.4103032
+        ]
+      },
+      "id": "node/5003636936"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003636937",
+        "amenity": "fuel",
+        "name": "Grifo Consorcio Cari",
+        "name:es": "Grifo Consorcio Cari"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1471366,
+          -15.4188365
+        ]
+      },
+      "id": "node/5003636937"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003655321",
+        "amenity": "fuel",
+        "name": "PetroPerú",
+        "name:es": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1549821,
+          -15.3969236
+        ]
+      },
+      "id": "node/5003655321"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5003716021",
+        "amenity": "fuel",
+        "name": "Grifo Boedo",
+        "name:es": "Grifo Boedo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.146664,
+          -15.4198623
+        ]
+      },
+      "id": "node/5003716021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5007719728",
+        "amenity": "fuel",
+        "name": "Repsol",
+        "name:es": "Grifos",
+        "opening_hours": "24/7",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0765772,
+          -15.6643203
+        ]
+      },
+      "id": "node/5007719728"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010564025",
+        "amenity": "fuel",
+        "name": "Grifo Peña",
+        "name:es": "Grifo Peña"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6329639,
+          -16.0748015
+        ]
+      },
+      "id": "node/5010564025"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5010564321",
+        "amenity": "fuel",
+        "name": "Grifo 6 de Agosto",
+        "name:es": "Grifo 6 de Agosto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.6304963,
+          -16.0703914
+        ]
+      },
+      "id": "node/5010564321"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5148505225",
+        "amenity": "fuel",
+        "name": "primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.7731762,
+          -15.2038152
+        ]
+      },
+      "id": "node/5148505225"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166661490",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1662917,
+          -15.5097406
+        ]
+      },
+      "id": "node/5166661490"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166661593",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.172034,
+          -15.5150546
+        ]
+      },
+      "id": "node/5166661593"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166661594",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1644714,
+          -15.5052594
+        ]
+      },
+      "id": "node/5166661594"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166661595",
+        "amenity": "fuel",
+        "name": "Los Pinos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1523138,
+          -15.5011928
+        ]
+      },
+      "id": "node/5166661595"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662519",
+        "amenity": "fuel",
+        "name": "Binacional"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0485586,
+          -16.5741749
+        ]
+      },
+      "id": "node/5166662519"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662848",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0522425,
+          -16.5469391
+        ]
+      },
+      "id": "node/5166662848"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166662908",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.08373,
+          -15.4365316
+        ]
+      },
+      "id": "node/5166662908"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166663256",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0807685,
+          -15.4352823
+        ]
+      },
+      "id": "node/5166663256"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166663421",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0357751,
+          -15.3303945
+        ]
+      },
+      "id": "node/5166663421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166663433",
+        "amenity": "fuel",
+        "name": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9770126,
+          -15.3031612
+        ]
+      },
+      "id": "node/5166663433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5166663522",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.8302033,
+          -15.2355446
+        ]
+      },
+      "id": "node/5166663522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5173952580",
+        "amenity": "fuel",
+        "name": "Primax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0805067,
+          -15.4346467
+        ]
+      },
+      "id": "node/5173952580"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5303941422",
+        "amenity": "fuel",
+        "name": "Petroperu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.0957243,
+          -16.5040966
+        ]
+      },
+      "id": "node/5303941422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5312359827",
+        "amenity": "fuel",
+        "name": "Grifo AVA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1081661,
+          -15.5256366
+        ]
+      },
+      "id": "node/5312359827"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5335115590",
+        "amenity": "fuel",
+        "name": "Petro Cop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.140758,
+          -15.4539678
+        ]
+      },
+      "id": "node/5335115590"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5335118111",
+        "amenity": "fuel",
+        "name": "Lubricentro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4330699,
+          -14.0658765
+        ]
+      },
+      "id": "node/5335118111"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5335119178",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1420198,
+          -15.4465565
+        ]
+      },
+      "id": "node/5335119178"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5335119188",
+        "amenity": "fuel",
+        "name": "San Carlos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.138216,
+          -15.4688768
+        ]
+      },
+      "id": "node/5335119188"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5335119400",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1398951,
+          -15.4616479
+        ]
+      },
+      "id": "node/5335119400"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5394586535",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.8966266,
+          -14.769341
+        ]
+      },
+      "id": "node/5394586535"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5775244353",
+        "amenity": "fuel",
+        "name": "Flying J",
+        "payment:mastercard": "yes",
+        "payment:visa_debit": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0194944,
+          -15.8308718
+        ]
+      },
+      "id": "node/5775244353"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5785128253",
+        "amenity": "fuel",
+        "name": "Pimex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0778826,
+          -15.4319404
+        ]
+      },
+      "id": "node/5785128253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5785155753",
+        "amenity": "fuel",
+        "name": "San Luis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0611146,
+          -15.3927919
+        ]
+      },
+      "id": "node/5785155753"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5825995253",
+        "amenity": "fuel",
+        "compressed_air": "no",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5846686,
+          -14.9039406
+        ]
+      },
+      "id": "node/5825995253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5844890552",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1522072,
+          -15.4047533
+        ]
+      },
+      "id": "node/5844890552"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5844890553",
+        "amenity": "fuel",
+        "construction": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1518251,
+          -15.4058093
+        ]
+      },
+      "id": "node/5844890553"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5844891006",
+        "amenity": "fuel",
+        "construction": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.173332,
+          -15.3608706
+        ]
+      },
+      "id": "node/5844891006"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5844891007",
+        "amenity": "fuel",
+        "construction": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2630246,
+          -15.2796521
+        ]
+      },
+      "id": "node/5844891007"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5844891343",
+        "amenity": "fuel",
+        "construction": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2296134,
+          -15.3113319
+        ]
+      },
+      "id": "node/5844891343"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6296391162",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.4655096,
+          -14.3267365
+        ]
+      },
+      "id": "node/6296391162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6786656292",
+        "amenity": "fuel",
+        "name": "Pecsa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.5525575,
+          -16.1559924
+        ]
+      },
+      "id": "node/6786656292"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6965670338",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4022709,
+          -14.9554045
+        ]
+      },
+      "id": "node/6965670338"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7192033573",
+        "amenity": "fuel",
+        "source": "Esri;bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1048327,
+          -15.559715
+        ]
+      },
+      "id": "node/7192033573"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7192033574",
+        "amenity": "fuel",
+        "source": "Esri;bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1066619,
+          -15.5558184
+        ]
+      },
+      "id": "node/7192033574"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7879149978",
+        "addr:housenumber": "1335",
+        "addr:street": "Avenida Floral",
+        "amenity": "fuel",
+        "compressed_air": "yes",
+        "name": "Gasolinera Repsol",
+        "opening_hours": "24/7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.0150926,
+          -15.8271969
+        ]
+      },
+      "id": "node/7879149978"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8716718704",
+        "amenity": "fuel",
+        "brand": "Pecsa",
+        "name": "Grifo Fátima"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.206078,
+          -14.9124615
+        ]
+      },
+      "id": "node/8716718704"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10537564508",
+        "amenity": "fuel",
+        "name": "Grifo Las Vegas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1325669,
+          -15.4847717
+        ]
+      },
+      "id": "node/10537564508"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10537631399",
+        "amenity": "fuel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.1263571,
+          -15.4868068
+        ]
+      },
+      "id": "node/10537631399"
+    }
+  ]
+}

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Binario de Búsqueda</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container-fluid {
+            height: 100%;
+            padding: 20px;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #ffffff;
+        }
+        .card-title {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        #canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            background-color: #f8f9fa;
+        }
+        .btn-action {
+            margin-bottom: 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .alert {
+            display: none;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group input {
+            border-radius: 20px 0 0 20px;
+        }
+        .input-group button {
+            border-radius: 0 20px 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row h-100">
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Árbol Binario de Búsqueda</h3>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="valorInsertar" placeholder="Valores a insertar (ej: 50,35,60,70)">
+                            <button class="btn btn-primary" onclick="insertar()"><i class="fas fa-plus"></i> Insertar</button>
+                        </div>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="valorEliminar" placeholder="Valor a eliminar">
+                            <button class="btn btn-danger" onclick="eliminar()"><i class="fas fa-minus"></i> Eliminar</button>
+                        </div>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="valorBuscar" placeholder="Valor a buscar">
+                            <button class="btn btn-info" onclick="buscar()"><i class="fas fa-search"></i> Buscar</button>
+                        </div>
+                        <button class="btn btn-secondary w-100 btn-action" onclick="imprimir()"><i class="fas fa-print"></i> Imprimir en consola</button>
+                        <button class="btn btn-warning w-100 btn-action" onclick="limpiar()"><i class="fas fa-broom"></i> Limpiar árbol</button>
+                        <div class="alert mt-3" role="alert" id="mensaje"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        class Nodo {
+            constructor(valor) {
+                this.valor = valor;
+                this.izquierdo = null;
+                this.derecho = null;
+                this.x = 0;
+                this.y = 0;
+            }
+        }
+
+        class ArbolBinario {
+            constructor() {
+                this.raiz = null;
+            }
+
+            insertar(valor) {
+                const nuevoNodo = new Nodo(valor);
+                if (this.raiz === null) {
+                    this.raiz = nuevoNodo;
+                    this.raiz.x = canvas.width / 2;
+                    this.raiz.y = 60;
+                    asignarPosiciones();
+                    dibujarNodo(this.raiz, '#28a745');
+                    mostrarMensaje(`Valor ${valor} insertado con éxito.`, 'success');
+                } else {
+                    const caminoInsercion = this.obtenerCamino(valor);
+                    this.insertarNodo(this.raiz, nuevoNodo);
+                    asignarPosiciones();
+                    animarInsercion(caminoInsercion, valor);
+                }
+            }
+
+            insertarNodo(nodo, nuevoNodo) {
+                if (nuevoNodo.valor < nodo.valor) {
+                    if (nodo.izquierdo === null) {
+                        nodo.izquierdo = nuevoNodo;
+                    } else {
+                        this.insertarNodo(nodo.izquierdo, nuevoNodo);
+                    }
+                } else {
+                    if (nodo.derecho === null) {
+                        nodo.derecho = nuevoNodo;
+                    } else {
+                        this.insertarNodo(nodo.derecho, nuevoNodo);
+                    }
+                }
+            }
+
+            eliminar(valor) {
+                const camino = this.obtenerCamino(valor);
+                if (camino.length === 0) {
+                    mostrarMensaje(`El valor ${valor} no se encuentra en el árbol.`, 'warning');
+                    return;
+                }
+                animarEliminacion(camino, () => {
+                    this.raiz = this.eliminarNodo(this.raiz, valor);
+                    asignarPosiciones();
+                    dibujar();
+                    mostrarMensaje(`Valor ${valor} eliminado con éxito.`, 'success');
+                });
+            }
+
+            eliminarNodo(nodo, valor) {
+                if (nodo === null) {
+                    return null;
+                } else if (valor < nodo.valor) {
+                    nodo.izquierdo = this.eliminarNodo(nodo.izquierdo, valor);
+                    return nodo;
+                } else if (valor > nodo.valor) {
+                    nodo.derecho = this.eliminarNodo(nodo.derecho, valor);
+                    return nodo;
+                } else {
+                    if (nodo.izquierdo === null && nodo.derecho === null) {
+                        nodo = null;
+                        return nodo;
+                    }
+                    if (nodo.izquierdo === null) {
+                        nodo = nodo.derecho;
+                        return nodo;
+                    } else if (nodo.derecho === null) {
+                        nodo = nodo.izquierdo;
+                        return nodo;
+                    }
+
+                    const aux = this.buscarMinimo(nodo.derecho);
+                    nodo.valor = aux.valor;
+                    nodo.derecho = this.eliminarNodo(nodo.derecho, aux.valor);
+                    return nodo;
+                }
+            }
+
+            buscarMinimo(nodo) {
+                while (nodo.izquierdo !== null) {
+                    nodo = nodo.izquierdo;
+                }
+                return nodo;
+            }
+
+            buscar(valor) {
+                return this.buscarNodo(this.raiz, valor);
+            }
+
+            buscarNodo(nodo, valor) {
+                if (nodo === null) {
+                    return null;
+                } else if (valor < nodo.valor) {
+                    return this.buscarNodo(nodo.izquierdo, valor);
+                } else if (valor > nodo.valor) {
+                    return this.buscarNodo(nodo.derecho, valor);
+                } else {
+                    return nodo;
+                }
+            }
+
+            imprimir() {
+                if (this.raiz === null) {
+                    console.log("El árbol está vacío");
+                } else {
+                    this.imprimirNodo(this.raiz, 0);
+                }
+            }
+
+            imprimirNodo(nodo, espacio) {
+                if (nodo !== null) {
+                    espacio += 5;
+                    this.imprimirNodo(nodo.derecho, espacio);
+                    console.log(" ".repeat(espacio) + nodo.valor);
+                    this.imprimirNodo(nodo.izquierdo, espacio);
+                }
+            }
+
+            obtenerCamino(valor) {
+                const camino = [];
+                this.buscarCamino(this.raiz, valor, camino);
+                return camino;
+            }
+
+            buscarCamino(nodo, valor, camino) {
+                if (nodo === null) {
+                    return false;
+                }
+                camino.push(nodo);
+                if (nodo.valor === valor) {
+                    return true;
+                }
+                if (this.buscarCamino(nodo.izquierdo, valor, camino) || 
+                    this.buscarCamino(nodo.derecho, valor, camino)) {
+                    return true;
+                }
+                camino.pop();
+                return false;
+            }
+        }
+
+        const arbol = new ArbolBinario();
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function ajustarCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            asignarPosiciones();
+            dibujar();
+        }
+
+        window.addEventListener('resize', ajustarCanvas);
+        ajustarCanvas();
+
+        function insertar() {
+            const valores = document.getElementById('valorInsertar').value;
+            const valoresArray = valores.split(',').map(v => parseInt(v.trim())).filter(v => !isNaN(v));
+            if (valoresArray.length > 0) {
+                let i = 0;
+                function insertarSiguiente() {
+                    if (i < valoresArray.length) {
+                        const valor = valoresArray[i];
+                        const caminoInsercion = arbol.obtenerCamino(valor);
+                        arbol.insertar(valor);
+                        asignarPosiciones();
+                        dibujar();
+                        animarInsercion(caminoInsercion, valor);
+                        i++;
+                        setTimeout(insertarSiguiente, 2000);
+                    }
+                }
+                insertarSiguiente();
+            } else {
+                mostrarMensaje('Por favor, ingrese números válidos.', 'danger');
+            }
+        }
+
+        function eliminar() {
+            const valor = parseInt(document.getElementById('valorEliminar').value);
+            if (!isNaN(valor)) {
+                arbol.eliminar(valor);
+            } else {
+                mostrarMensaje('Por favor, ingrese un número válido.', 'danger');
+            }
+        }
+
+        function buscar() {
+            const valor = parseInt(document.getElementById('valorBuscar').value);
+            if (!isNaN(valor)) {
+                const nodo = arbol.buscar(valor);
+                if (nodo !== null) {
+                    mostrarMensaje(`Valor ${valor} encontrado en el árbol.`, 'info');
+                    animarBusqueda(arbol.obtenerCamino(valor));
+                } else {
+                    mostrarMensaje(`Valor ${valor} no encontrado en el árbol.`, 'warning');
+                }
+            } else {
+                mostrarMensaje('Por favor, ingrese un número válido.', 'danger');
+            }
+        }
+
+        function imprimir() {
+            console.clear();
+            arbol.imprimir();
+            mostrarMensaje('Árbol impreso en la consola. Presione F12 para ver.', 'info');
+        }
+
+        function limpiar() {
+            arbol.raiz = null;
+            dibujar();
+            mostrarMensaje('Árbol limpiado con éxito.', 'success');
+        }
+
+        function asignarPosiciones() {
+            if (arbol.raiz !== null) {
+                calcularPosiciones(arbol.raiz, canvas.width / 2, 60, canvas.width / 4);
+            }
+        }
+
+        function calcularPosiciones(nodo, x, y, separacion) {
+            if (nodo !== null) {
+                nodo.x = x;
+                nodo.y = y;
+                calcularPosiciones(nodo.izquierdo, x - separacion, y + 80, separacion / 2);
+                calcularPosiciones(nodo.derecho, x + separacion, y + 80, separacion / 2);
+            }
+        }
+
+        function dibujar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (arbol.raiz !== null) {
+                dibujarNodo(arbol.raiz);
+            }
+        }
+
+        function dibujarNodo(nodo, color = '#3498db') {
+            if (nodo) {
+                if (nodo.izquierdo !== null) {
+                    ctx.beginPath();
+                    ctx.moveTo(nodo.x, nodo.y);
+                    ctx.lineTo(nodo.izquierdo.x, nodo.izquierdo.y);
+                    ctx.strokeStyle = '#95a5a6';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    dibujarNodo(nodo.izquierdo);
+                }
+                if (nodo.derecho !== null) {
+                    ctx.beginPath();
+                    ctx.moveTo(nodo.x, nodo.y);
+                    ctx.lineTo(nodo.derecho.x, nodo.derecho.y);
+                    ctx.strokeStyle = '#95a5a6';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    dibujarNodo(nodo.derecho);
+                }
+                ctx.beginPath();
+                ctx.arc(nodo.x, nodo.y, 25, 0, 2 * Math.PI);
+                ctx.fillStyle = color;
+                ctx.fill();
+                ctx.strokeStyle = '#2980b9';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(nodo.valor, nodo.x, nodo.y);
+            }
+        }
+
+        function animarInsercion(camino, valorNuevo) {
+            let i = 0;
+            const intervalo = setInterval(() => {
+                dibujar();
+                for (let j = 0; j < i; j++) {
+                    dibujarNodo(camino[j], '#2ecc71'); // Verde para camino
+                }
+                if (i < camino.length) {
+                    dibujarNodo(camino[i], '#f39c12'); // Naranja para nodo actual
+                }
+                i++;
+                if (i === camino.length) {
+                    clearInterval(intervalo);
+                    setTimeout(() => {
+                        dibujar();
+                        const nodoNuevo = arbol.buscar(valorNuevo);
+                        if (nodoNuevo) {
+                            dibujarNodo(nodoNuevo, '#e74c3c'); // Rojo para nodo nuevo
+                        }
+                    }, 500);
+                }
+            }, 1000);
+        }
+
+        function animarEliminacion(camino, callback) {
+            let i = 0;
+            const intervalo = setInterval(() => {
+                dibujar();
+                for (let j = 0; j < i; j++) {
+                    dibujarNodo(camino[j], '#e74c3c'); // Rojo para camino de eliminación
+                }
+                if (i < camino.length) {
+                    dibujarNodo(camino[i], '#f39c12'); // Naranja para nodo actual
+                }
+                i++;
+                if (i === camino.length) {
+                    clearInterval(intervalo);
+                    setTimeout(callback, 500);
+                }
+            }, 1000);
+        }
+
+        function animarBusqueda(camino) {
+            let i = 0;
+            const intervalo = setInterval(() => {
+                dibujar();
+                for (let j = 0; j <= i; j++) {
+                    dibujarNodo(camino[j], '#9b59b6'); // Morado para camino encontrado
+                }
+                i++;
+                if (i === camino.length) {
+                    clearInterval(intervalo);
+                    setTimeout(() => {
+                        dibujar();
+                    }, 1000);
+                }
+            }, 1000);
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const alertElement = document.getElementById('mensaje');
+            alertElement.textContent = mensaje;
+            alertElement.className = `alert alert-${tipo}`;
+            alertElement.style.display = 'block';
+            setTimeout(() => {
+                alertElement.style.display = 'none';
+            }, 3000);
+        }
+
+        // Inicializar el canvas y asignar posiciones iniciales
+        ajustarCanvas();
+    </script>
+</body>
+</html>

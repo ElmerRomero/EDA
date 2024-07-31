@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .song-card {
+            cursor: pointer;
+        }
+        .suggestion-item {
+            cursor: pointer;
+        }
+        .song-image {
+            width: 100%;
+            height: auto;
+        }
+        #player {
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+
+            width: 800px;
+            margin-left: auto;
+        }
+        #progressBar {
+            height: 5px;
+            cursor: pointer;
+        }
+        #playlist {
+            max-height: 300px;
+            overflow-y: auto;
+            width: 800px;
+            
+        }
+        .genre-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.8em;
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <h1 class="mb-0">Reproductor de Música</h1>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <section class="mb-5">
+            <h2 class="mb-3">Buscar Canciones</h2>
+            <div class="input-group mb-3 position-relative">
+                <input type="text" class="form-control" id="searchInput" placeholder="Buscar por nombre o artista...">
+                <button class="btn btn-primary" type="button" id="searchButton">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+                <ul class="list-group position-absolute w-100" id="suggestions" style="z-index: 1000; display: none;"></ul>
+            </div>
+        </section>
+
+        <section class="mb-5" id="genresSection"></section>
+
+        <section id="songsSection" class="mb-5" style="display: none;"></section>
+
+        <section id="results" class="mb-5"></section>
+
+        <section id="recommendations" class="mb-5"></section>
+
+        <section id="playlist" class="mb-5">
+            <h3>Lista de Reproducción</h3>
+            <ul class="list-group" id="playlistItems"></ul>
+        </section>
+    </main>
+
+    <footer id="player" class="fixed-bottom p-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h4 id="nowPlaying" class="mb-0"></h4>
+                    <p id="currentArtist" class="mb-0 text-muted"></p>
+                </div>
+                <div class="col-md-4">
+                    <div class="progress mb-2" id="progressBar">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button id="prevBtn" class="btn btn-outline-secondary">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button id="playPauseBtn" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="nextBtn" class="btn btn-outline-secondary">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button id="shuffleBtn" class="btn btn-outline-secondary">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button id="repeatBtn" class="btn btn-outline-secondary">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        class Song {
+            constructor(id, name, artist, genre, features, duration) {
+                this.id = id;
+                this.name = name;
+                this.artist = artist;
+                this.genre = genre;
+                this.features = features;
+                this.duration = duration;
+            }
+        }
+
+        class Node {
+            constructor(song) {
+                this.song = song;
+                this.radius = 0;
+                this.inside = null;
+                this.outside = null;
+            }
+        }
+
+        class Audio {
+            constructor() {
+                this.isPlaying = false;
+                this.currentTime = 0;
+                this.duration = 0;
+                this.interval = null;
+            }
+
+            play() {
+                this.isPlaying = true;
+                this.interval = setInterval(() => {
+                    this.currentTime++;
+                    if (this.currentTime >= this.duration) {
+                        this.stop();
+                        player.next();
+                    }
+                    updateProgressBar();
+                }, 1000);
+            }
+
+            pause() {
+                this.isPlaying = false;
+                clearInterval(this.interval);
+            }
+
+            stop() {
+                this.pause();
+                this.currentTime = 0;
+            }
+
+            setDuration(duration) {
+                this.duration = duration;
+            }
+        }
+
+        class Player {
+            constructor() {
+                this.playlist = [];
+                this.currentIndex = 0;
+                this.audio = new Audio();
+                this.shuffle = false;
+                this.repeat = false;
+            }
+
+            addToPlaylist(song) {
+                this.playlist.push(song);
+                updatePlaylistUI();
+            }
+
+            play() {
+                if (this.playlist.length === 0) return;
+                const currentSong = this.playlist[this.currentIndex];
+                this.audio.setDuration(currentSong.duration);
+                this.audio.play();
+                updatePlayerUI();
+            }
+
+            pause() {
+                this.audio.pause();
+                updatePlayerUI();
+            }
+
+            next() {
+                if (this.repeat) {
+                    this.audio.stop();
+                    this.play();
+                    return;
+                }
+                if (this.shuffle) {
+                    this.currentIndex = Math.floor(Math.random() * this.playlist.length);
+                } else {
+                    this.currentIndex = (this.currentIndex + 1) % this.playlist.length;
+                }
+                this.audio.stop();
+                this.play();
+            }
+
+            prev() {
+                if (this.shuffle) {
+                    this.currentIndex = Math.floor(Math.random() * this.playlist.length);
+                } else {
+                    this.currentIndex = (this.currentIndex - 1 + this.playlist.length) % this.playlist.length;
+                }
+                this.audio.stop();
+                this.play();
+            }
+
+            toggleShuffle() {
+                this.shuffle = !this.shuffle;
+                updatePlayerUI();
+            }
+
+            toggleRepeat() {
+                this.repeat = !this.repeat;
+                updatePlayerUI();
+            }
+        }
+
+        class VPTree {
+            constructor(songs, distanceFunc) {
+                this.distanceFunc = distanceFunc;
+                this.root = this.buildTree(songs);
+            }
+
+            buildTree(songs) {
+                if (songs.length === 0) return null;
+                const index = Math.floor(Math.random() * songs.length);
+                const [song] = songs.splice(index, 1);
+                const node = new Node(song);
+
+                if (songs.length === 0) return node;
+
+                const distances = songs.map(s => this.distanceFunc(song.features, s.features));
+                const median = this.median(distances);
+                node.radius = median;
+
+                const [insideSongs, outsideSongs] = songs.reduce((acc, s, i) => {
+                    acc[distances[i] <= median ? 0 : 1].push(s);
+                    return acc;
+                }, [[], []]);
+
+                node.inside = this.buildTree(insideSongs);
+                node.outside = this.buildTree(outsideSongs);
+
+                return node;
+            }
+
+            median(values) {
+                const sorted = [...values].sort((a, b) => a - b);
+                const mid = Math.floor(sorted.length / 2);
+                return sorted[mid];
+            }
+
+            search(song, maxResults, node = this.root, neighbors = []) {
+                if (!node) return neighbors;
+
+                const dist = this.distanceFunc(song.features, node.song.features);
+                if (neighbors.length < maxResults || dist < neighbors[0].distance) {
+                    neighbors.push({ song: node.song, distance: dist });
+                    neighbors.sort((a, b) => b.distance - a.distance);
+                    if (neighbors.length > maxResults) neighbors.pop();
+                }
+
+                const checkInsideFirst = dist < node.radius;
+                const [first, second] = checkInsideFirst ? [node.inside, node.outside] : [node.outside, node.inside];
+
+                this.search(song, maxResults, first, neighbors);
+                if (neighbors.length < maxResults || Math.abs(node.radius - dist) < neighbors[neighbors.length - 1].distance) {
+                    this.search(song, maxResults, second, neighbors);
+                }
+
+                return neighbors;
+            }
+        }
+
+        function euclideanDistance(a, b) {
+            return Math.hypot(...a.map((x, i) => x - b[i]));
+        }
+
+        const genres = {
+    "Pop": [
+        new Song(1, "Shape of You", "Ed Sheeran", "Pop", [120, 55, 210], 235),
+        new Song(2, "Blinding Lights", "The Weeknd", "Pop", [130, 60, 200], 200),
+        new Song(11, "Levitating", "Dua Lipa", "Pop", [125, 65, 215], 203),
+        new Song(12, "Watermelon Sugar", "Harry Styles", "Pop", [135, 70, 205], 174),
+        new Song(13, "Bad Guy", "Billie Eilish", "Pop", [140, 60, 220], 194),
+        new Song(14, "Don't Start Now", "Dua Lipa", "Pop", [145, 65, 225], 183),
+        new Song(15, "Señorita", "Shawn Mendes & Camila Cabello", "Pop", [150, 70, 230], 191),
+        new Song(16, "Memories", "Maroon 5", "Pop", [155, 75, 235], 189),
+        new Song(17, "Someone You Loved", "Lewis Capaldi", "Pop", [160, 80, 240], 182),
+        new Song(18, "Havana", "Camila Cabello", "Pop", [165, 85, 245], 216),
+        new Song(19, "Adore You", "Harry Styles", "Pop", [170, 90, 250], 207),
+        new Song(20, "Circles", "Post Malone", "Pop", [175, 95, 255], 215),
+        new Song(21, "Savage Love", "Jawsh 685 & Jason Derulo", "Pop", [180, 100, 260], 171),
+        new Song(22, "Yummy", "Justin Bieber", "Pop", [185, 105, 265], 212),
+        new Song(23, "Stitches", "Shawn Mendes", "Pop", [190, 110, 270], 207)
+    ],
+    "Rock": [
+        new Song(3, "Bohemian Rhapsody", "Queen", "Rock", [140, 70, 250], 354),
+        new Song(4, "Stairway to Heaven", "Led Zeppelin", "Rock", [150, 75, 260], 482),
+        new Song(24, "Hotel California", "Eagles", "Rock", [145, 72, 255], 391),
+        new Song(25, "Sweet Child O' Mine", "Guns N' Roses", "Rock", [155, 77, 265], 356),
+        new Song(26, "Smells Like Teen Spirit", "Nirvana", "Rock", [160, 80, 275], 301),
+        new Song(27, "Wonderwall", "Oasis", "Rock", [165, 85, 280], 258),
+        new Song(28, "Back in Black", "AC/DC", "Rock", [170, 90, 285], 255),
+        new Song(29, "November Rain", "Guns N' Roses", "Rock", [175, 95, 290], 536),
+        new Song(30, "Nothing Else Matters", "Metallica", "Rock", [180, 100, 295], 388),
+        new Song(31, "Paint It Black", "The Rolling Stones", "Rock", [185, 105, 300], 231),
+        new Song(32, "Imagine", "John Lennon", "Rock", [190, 110, 305], 183),
+        new Song(33, "Enter Sandman", "Metallica", "Rock", [195, 115, 310], 332),
+        new Song(34, "Highway to Hell", "AC/DC", "Rock", [200, 120, 315], 208),
+        new Song(35, "Come Together", "The Beatles", "Rock", [205, 125, 320], 259),
+        new Song(36, "Wish You Were Here", "Pink Floyd", "Rock", [210, 130, 325], 334)
+    ],
+    "Hip-Hop": [
+        new Song(5, "Sicko Mode", "Travis Scott", "Hip-Hop", [160, 80, 270], 312),
+        new Song(6, "God's Plan", "Drake", "Hip-Hop", [170, 85, 280], 198),
+        new Song(37, "HUMBLE.", "Kendrick Lamar", "Hip-Hop", [165, 82, 275], 181),
+        new Song(38, "Goosebumps", "Travis Scott", "Hip-Hop", [175, 87, 285], 248),
+        new Song(39, "Lucid Dreams", "Juice WRLD", "Hip-Hop", [180, 90, 290], 239),
+        new Song(40, "Life Goes On", "BTS", "Hip-Hop", [185, 95, 295], 215),
+        new Song(41, "Rockstar", "Post Malone", "Hip-Hop", [190, 100, 300], 218),
+        new Song(42, "Money Trees", "Kendrick Lamar", "Hip-Hop", [195, 105, 305], 366),
+        new Song(43, "The Box", "Roddy Ricch", "Hip-Hop", [200, 110, 310], 195),
+        new Song(44, "Laugh Now Cry Later", "Drake", "Hip-Hop", [205, 115, 315], 264),
+        new Song(45, "Nonstop", "Drake", "Hip-Hop", [210, 120, 320], 226),
+        new Song(46, "What's Next", "Drake", "Hip-Hop", [215, 125, 325], 177),
+        new Song(47, "Body", "Megan Thee Stallion", "Hip-Hop", [220, 130, 330], 173),
+        new Song(48, "Mood", "24kGoldn ft. Iann Dior", "Hip-Hop", [225, 135, 335], 140),
+        new Song(49, "For the Night", "Pop Smoke", "Hip-Hop", [230, 140, 340], 211)
+    ],
+    "Electronic": [
+        new Song(7, "Titanium", "David Guetta ft. Sia", "Electronic", [180, 90, 290], 245),
+        new Song(8, "Wake Me Up", "Avicii", "Electronic", [190, 95, 300], 247),
+        new Song(50, "Lean On", "Major Lazer & DJ Snake", "Electronic", [185, 92, 295], 176),
+        new Song(51, "Animals", "Martin Garrix", "Electronic", [195, 97, 305], 268),
+        new Song(52, "Turn Down for What", "DJ Snake & Lil Jon", "Electronic", [200, 100, 310], 213),
+        new Song(53, "Don't Let Me Down", "The Chainsmokers", "Electronic", [205, 105, 315], 208),
+        new Song(54, "Clarity", "Zedd", "Electronic", [210, 110, 320], 277),
+        new Song(55, "Silence", "Marshmello ft. Khalid", "Electronic", [215, 115, 325], 181),
+        new Song(56, "Faded", "Alan Walker", "Electronic", [220, 120, 330], 212),
+        new Song(57, "Strobe", "Deadmau5", "Electronic", [225, 125, 335], 630),
+        new Song(58, "Shelter", "Porter Robinson & Madeon", "Electronic", [230, 130, 340], 217),
+        new Song(59, "Closer", "The Chainsmokers ft. Halsey", "Electronic", [235, 135, 345], 244),
+        new Song(60, "Alone", "Marshmello", "Electronic", [240, 140, 350], 162),
+        new Song(61, "Stay", "Zedd & Alessia Cara", "Electronic", [245, 145, 355], 210),
+        new Song(62, "Scared to Be Lonely", "Martin Garrix & Dua Lipa", "Electronic", [250, 150, 360], 219)
+    ],
+    "Latin": [
+        new Song(9, "Despacito", "Luis Fonsi & Daddy Yankee", "Latin", [200, 100, 310], 229),
+        new Song(10, "Bailando", "Enrique Iglesias", "Latin", [210, 105, 320], 240),
+        new Song(63, "Mi Gente", "J Balvin & Willy William", "Latin", [205, 102, 315], 193),
+        new Song(64, "Taki Taki", "DJ Snake", "Latin", [215, 107, 325], 210),
+        new Song(65, "Vivir Mi Vida", "Marc Anthony", "Latin", [220, 110, 330], 254),
+        new Song(66, "El Perdón", "Nicky Jam & Enrique Iglesias", "Latin", [225, 115, 335], 205),
+        new Song(67, "Dákiti", "Bad Bunny & Jhay Cortez", "Latin", [230, 120, 340], 205),
+        new Song(68, "Hawái", "Maluma", "Latin", [235, 125, 345], 195),
+        new Song(69, "Con Calma", "Daddy Yankee", "Latin", [240, 130, 350], 193),
+        new Song(70, "China", "Anuel AA", "Latin", [245, 135, 355], 301),
+        new Song(71, "Felices los 4", "Maluma", "Latin", [250, 140, 360], 231),
+        new Song(72, "Calma", "Pedro Capó", "Latin", [255, 145, 365], 210),
+        new Song(73, "Te Boté", "Nio Garcia", "Latin", [260, 150, 370], 448),
+        new Song(74, "Amor Tóxico", "Ozuna", "Latin", [265, 155, 375], 193),
+        new Song(75, "Loco Contigo", "DJ Snake", "Latin", [270, 160, 380], 185)
+    ]
+};
+
+
+        const player = new Player();
+        const allSongs = Object.values(genres).flat();
+        const vpTree = new VPTree(allSongs, euclideanDistance);
+
+        function getSimilarSongs(song, maxResults = 3) {
+            const sameCenreSongs = genres[song.genre].filter(s => s.id !== song.id);
+            return sameCenreSongs
+                .sort((a, b) => euclideanDistance(song.features, a.features) - euclideanDistance(song.features, b.features))
+                .slice(0, maxResults);
+        }
+
+        function displayRecommendations() {
+            if (player.playlist.length === 0) return;
+
+            const currentSong = player.playlist[player.currentIndex];
+            const similarSongs = getSimilarSongs(currentSong);
+
+            const recommendationsSection = document.getElementById('recommendations');
+            recommendationsSection.innerHTML = '<h3 class="mb-3">Canciones recomendadas:</h3>';
+            const rowDiv = document.createElement('div');
+            rowDiv.classList.add('row');
+
+            similarSongs.forEach(song => {
+                const col = document.createElement('div');
+                col.classList.add('col-md-4', 'mb-3');
+                col.innerHTML = `
+                    <div class="card song-card" data-id="${song.id}">
+                        <span class="badge bg-primary genre-badge">${song.genre}</span>
+                        <img src="Icono.png" class="card-img-top song-image" alt="${song.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${song.name}</h5>
+                            <p class="card-text">${song.artist}</p>
+                            <button class="btn btn-primary add-to-playlist">Agregar a la lista</button>
+                        </div>
+                    </div>
+                `;
+                col.querySelector('.add-to-playlist').addEventListener('click', () => {
+                    player.addToPlaylist(song);
+                    updatePlaylistUI();
+                });
+                rowDiv.appendChild(col);
+            });
+
+            recommendationsSection.appendChild(rowDiv);
+        }
+
+        function updatePlayerUI() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const shuffleBtn = document.getElementById('shuffleBtn');
+            const repeatBtn = document.getElementById('repeatBtn');
+            const nowPlaying = document.getElementById('nowPlaying');
+            const currentArtist = document.getElementById('currentArtist');
+
+            playPauseBtn.innerHTML = player.audio.isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+            shuffleBtn.classList.toggle('active', player.shuffle);
+            repeatBtn.classList.toggle('active', player.repeat);
+
+            if (player.playlist.length > 0) {
+                const currentSong = player.playlist[player.currentIndex];
+                nowPlaying.textContent = currentSong.name;
+                currentArtist.textContent = currentSong.artist;
+            }
+
+            displayRecommendations();
+        }
+
+        function updateProgressBar() {
+            const progressBar = document.querySelector('#progressBar .progress-bar');
+            const currentTime = document.getElementById('currentTime');
+            const duration = document.getElementById('duration');
+
+            const percent = (player.audio.currentTime / player.audio.duration) * 100;
+            progressBar.style.width = `${percent}%`;
+
+            currentTime.textContent = formatTime(player.audio.currentTime);
+            duration.textContent = formatTime(player.audio.duration);
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        function updatePlaylistUI() {
+            const playlistItems = document.getElementById('playlistItems');
+            playlistItems.innerHTML = '';
+            player.playlist.forEach((song, index) => {
+                const li = document.createElement('li');
+                li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+                li.innerHTML = `
+                    <span>${song.name} - ${song.artist}</span>
+                    <span>${formatTime(song.duration)}</span>
+                `;
+                li.addEventListener('click', () => {
+                    player.currentIndex = index;
+                    player.audio.stop();
+                    player.play();
+                });
+                playlistItems.appendChild(li);
+            });
+        }
+
+        function displayGenres() {
+            const genresSection = document.getElementById('genresSection');
+            genresSection.innerHTML = '<h3 class="mb-3">Géneros:</h3>';
+            const rowDiv = document.createElement('div');
+            rowDiv.classList.add('row');
+            for (const genre in genres) {
+                const col = document.createElement('div');
+                col.classList.add('col-md-2', 'mb-3');
+                col.innerHTML = `
+                    <div class="card genre-card" data-genre="${genre}">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${genre}</h5>
+                        </div>
+                    </div>
+                `;
+                col.addEventListener('click', () => displaySongsByGenre(genre));
+                rowDiv.appendChild(col);
+            }
+            genresSection.appendChild(rowDiv);
+        }
+
+        function displaySongsByGenre(genre) {
+            const songsSection = document.getElementById('songsSection');
+            songsSection.style.display = 'block';
+            songsSection.innerHTML = `
+                <h3 class="mb-3">Canciones de ${genre}:</h3>
+                <div class="row"></div>
+            `;
+            const rowDiv = songsSection.querySelector('.row');
+            genres[genre].forEach(song => {
+                const col = document.createElement('div');
+                col.classList.add('col-md-4', 'mb-3');
+                col.innerHTML = `
+                    <div class="card song-card" data-id="${song.id}">
+                        <img src="Icono.png" class="card-img-top song-image" alt="${song.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${song.name}</h5>
+                            <p class="card-text">${song.artist}</p>
+                            <button class="btn btn-primary add-to-playlist">Agregar a la lista</button>
+                        </div>
+                    </div>
+                `;
+                col.querySelector('.add-to-playlist').addEventListener('click', () => {
+                    player.addToPlaylist(song);
+                    updatePlaylistUI();
+                });
+                rowDiv.appendChild(col);
+            });
+        }
+
+        function filterSuggestions(query) {
+            const suggestionsList = document.getElementById('suggestions');
+            suggestionsList.innerHTML = '';
+            if (query.length === 0) {
+                suggestionsList.style.display = 'none';
+                return;
+            }
+
+            const filteredSongs = allSongs.filter(song => 
+                song.name.toLowerCase().includes(query.toLowerCase()) ||
+                song.artist.toLowerCase().includes(query.toLowerCase())
+            );
+
+            filteredSongs.forEach(song => {
+                const suggestionItem = document.createElement('li');
+                suggestionItem.classList.add('list-group-item', 'suggestion-item');
+                suggestionItem.textContent = `${song.name} - ${song.artist}`;
+                suggestionItem.addEventListener('click', () => {
+                    document.getElementById('searchInput').value = `${song.name} - ${song.artist}`;
+                    player.addToPlaylist(song);
+                    updatePlaylistUI();
+                    suggestionsList.style.display = 'none';
+                });
+                suggestionsList.appendChild(suggestionItem);
+            });
+
+            suggestionsList.style.display = 'block';
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            filterSuggestions(e.target.value);
+        });
+
+        document.getElementById('searchButton').addEventListener('click', () => {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const song = allSongs.find(s => 
+                s.name.toLowerCase() === query ||
+                s.artist.toLowerCase() === query ||
+                `${s.name} - ${s.artist}`.toLowerCase() === query
+            );
+            if (song) {
+                player.addToPlaylist(song);
+                updatePlaylistUI();
+            } else {
+                alert('No se encontró ninguna canción con ese nombre o artista.');
+            }
+        });
+
+        document.getElementById('playPauseBtn').addEventListener('click', () => {
+            if (player.audio.isPlaying) {
+                player.pause();
+            } else {
+                player.play();
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => player.next());
+        document.getElementById('prevBtn').addEventListener('click', () => player.prev());
+        document.getElementById('shuffleBtn').addEventListener('click', () => player.toggleShuffle());
+        document.getElementById('repeatBtn').addEventListener('click', () => player.toggleRepeat());
+
+        document.getElementById('progressBar').addEventListener('click', (e) => {
+            const percent = e.offsetX / e.target.offsetWidth;
+            player.audio.currentTime = percent * player.audio.duration;
+            updateProgressBar();
+        });
+
+        displayGenres();
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas de Proximidad</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        #canvas {
+            border: 1px solid #dee2e6;
+            border-radius: .25rem;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Consultas de Proximidad</h1>
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8">
+                <form id="pointsForm" class="mb-4">
+                    <div class="input-group mb-3">
+                        <input type="number" id="numPoints" class="form-control" placeholder="Cantidad de puntos" min="1">
+                        <input type="number" id="numNeighbors" class="form-control" placeholder="Cantidad de vecinos cercanos" min="1">
+                        <button type="submit" class="btn btn-primary">Generar Puntos</button>
+                    </div>
+                </form>
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <canvas id="canvas" width="500" height="500"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Resultados</h5>
+                        <div id="results"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        class KDNode {
+            constructor(point, axis, left = null, right = null) {
+                this.point = point;
+                this.axis = axis;
+                this.left = left;
+                this.right = right;
+            }
+        }
+
+        function buildKDTree(points, depth = 0) {
+            if (points.length === 0) {
+                return null;
+            }
+
+            const axis = depth % 2;
+            points.sort((a, b) => a[axis] - b[axis]);
+            const medianIndex = Math.floor(points.length / 2);
+            const medianPoint = points[medianIndex];
+
+            return new KDNode(
+                medianPoint,
+                axis,
+                buildKDTree(points.slice(0, medianIndex), depth + 1),
+                buildKDTree(points.slice(medianIndex + 1), depth + 1)
+            );
+        }
+
+        function distanceSquared(point1, point2) {
+            return (point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2;
+        }
+
+        function nearestNeighbor(node, target, depth = 0, best = null) {
+            if (node === null) {
+                return best;
+            }
+
+            const axis = depth % 2;
+            const nextBest = best === null || distanceSquared(target, node.point) < distanceSquared(target, best.point) ? node : best;
+            const nextDepth = depth + 1;
+
+            let nextNode = null;
+            let oppositeNode = null;
+
+            if (target[axis] < node.point[axis]) {
+                nextNode = node.left;
+                oppositeNode = node.right;
+            } else {
+                nextNode = node.right;
+                oppositeNode = node.left;
+            }
+
+            best = nearestNeighbor(nextNode, target, nextDepth, nextBest);
+
+            if (distanceSquared(target, best.point) > (target[axis] - node.point[axis]) ** 2) {
+                best = nearestNeighbor(oppositeNode, target, nextDepth, best);
+            }
+
+            return best;
+        }
+
+        function kNearestNeighbors(node, target, k, depth = 0, heap = []) {
+            if (node === null) {
+                return heap;
+            }
+
+            const axis = depth % 2;
+            const distance = distanceSquared(target, node.point);
+
+            if (heap.length < k) {
+                heap.push({ node: node, distance: distance });
+                heap.sort((a, b) => a.distance - b.distance);
+            } else if (distance < heap[heap.length - 1].distance) {
+                heap[heap.length - 1] = { node: node, distance: distance };
+                heap.sort((a, b) => a.distance - b.distance);
+            }
+
+            const nextNode = target[axis] < node.point[axis] ? node.left : node.right;
+            const oppositeNode = target[axis] < node.point[axis] ? node.right : node.left;
+
+            heap = kNearestNeighbors(nextNode, target, k, depth + 1, heap);
+
+            if (heap.length < k || Math.abs(target[axis] - node.point[axis]) ** 2 < heap[heap.length - 1].distance) {
+                heap = kNearestNeighbors(oppositeNode, target, k, depth + 1, heap);
+            }
+
+            return heap;
+        }
+
+        function generateRandomPoints(numPoints, maxX, maxY) {
+            const points = [];
+            for (let i = 0; i < numPoints; i++) {
+                points.push([Math.floor(Math.random() * maxX), Math.floor(Math.random() * maxY)]);
+            }
+            return points;
+        }
+
+        function drawPoint(point, color = 'black') {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(point[0] * 25, canvas.height - point[1] * 25, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawCircle(center, radius, color = 'green') {
+            ctx.strokeStyle = color;
+            ctx.beginPath();
+            ctx.arc(center[0] * 25, canvas.height - center[1] * 25, radius * 25, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        function drawPoints(points, queryPoint, nearest, kNearest, radius) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            points.forEach(point => drawPoint(point));
+            drawPoint(queryPoint, 'blue');
+            if (nearest) drawPoint(nearest.point, 'red');
+            kNearest.forEach(result => drawPoint(result.node.point, 'green'));
+            if (radius > 0) drawCircle(queryPoint, radius, 'green');
+        }
+
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        let kdTree = null;
+
+        document.getElementById('pointsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const numPoints = parseInt(document.getElementById('numPoints').value);
+            const numNeighbors = parseInt(document.getElementById('numNeighbors').value);
+            if (numPoints > 0 && numNeighbors > 0) {
+                points = generateRandomPoints(numPoints, canvas.width / 25, canvas.height / 25);
+                kdTree = buildKDTree(points);
+                drawPoints(points, [0, 0], null, [], 0);
+                document.getElementById('results').innerHTML = '';
+            }
+        });
+
+        canvas.addEventListener('click', function(event) {
+            if (points.length === 0) return;
+
+            const numNeighbors = parseInt(document.getElementById('numNeighbors').value);
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const queryPoint = [Math.round(x / 25), Math.round((canvas.height - y) / 25)];
+            const nearest = nearestNeighbor(kdTree, queryPoint);
+            const kNearest = kNearestNeighbors(kdTree, queryPoint, numNeighbors);
+
+            const radius = Math.sqrt(kNearest[kNearest.length - 1].distance);
+
+            drawPoints(points, queryPoint, nearest, kNearest, radius);
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <p class="mb-2">Vecino más cercano a (${queryPoint[0]}, ${queryPoint[1]}): <strong>(${nearest.point[0]}, ${nearest.point[1]})</strong></p>
+                <p class="mb-2">Los ${numNeighbors} vecinos más cercanos a (${queryPoint[0]}, ${queryPoint[1]}):</p>
+                <ol class="list-group list-group-numbered">
+                    ${kNearest.map(result => `<li class="list-group-item">(${result.node.point[0]}, ${result.node.point[1]})</li>`).join('')}
+                </ol>
+            `;
+        });
+
+        drawPoints(points, [0, 0], null, [], 0);
+    </script>
+</body>
+</html>

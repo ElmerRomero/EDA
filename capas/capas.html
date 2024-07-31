@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapa Turístico de Nueva York</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Crear un mapa centrado en Nueva York
+        var map = L.map('map').setView([40.7128, -74.0060], 12);
+
+        // Añadir la capa base del mapa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Capa de puntos de interés turísticos
+        var poiLayer = L.geoJson(null, {
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('Punto de Interés: ' + feature.properties.name);
+            }
+        });
+
+        // Capa de rutas de senderismo
+        var hikingRoutesLayer = L.geoJson(null, {
+            style: {
+                color: 'green',
+                weight: 3,
+                opacity: 0.7
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('Ruta de Senderismo: ' + feature.properties.name);
+            }
+        });
+
+        // Capa de hoteles
+        var hotelsLayer = L.geoJson(null, {
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('Hotel: ' + feature.properties.name);
+            }
+        });
+
+        // Capa de restaurantes
+        var restaurantsLayer = L.geoJson(null, {
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('Restaurante: ' + feature.properties.name);
+            }
+        });
+
+        // Capa de estaciones de transporte público
+        var transportLayer = L.geoJson(null, {
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('Estación de Transporte: ' + feature.properties.name);
+            }
+        });
+
+        // Cargar datos GeoJSON para cada capa
+        fetch('https://data.cityofnewyork.us/resource/7i2k-cxmb.geojson') // Reemplaza con la URL de tus datos de puntos de interés turísticos
+            .then(response => response.json())
+            .then(data => poiLayer.addData(data));
+
+        fetch('https://data.cityofnewyork.us/resource/cpf4-rkhq.geojson') // Reemplaza con la URL de tus datos de rutas de senderismo
+            .then(response => response.json())
+            .then(data => hikingRoutesLayer.addData(data));
+
+        fetch('https://data.cityofnewyork.us/resource/dj7e-y38w.geojson') // Reemplaza con la URL de tus datos de hoteles
+            .then(response => response.json())
+            .then(data => hotelsLayer.addData(data));
+
+        fetch('https://data.cityofnewyork.us/resource/2yzn-sicd.geojson') // Reemplaza con la URL de tus datos de restaurantes
+            .then(response => response.json())
+            .then(data => restaurantsLayer.addData(data));
+
+        fetch('https://data.cityofnewyork.us/resource/arbs-d2ib.geojson') // Reemplaza con la URL de tus datos de transporte público
+            .then(response => response.json())
+            .then(data => transportLayer.addData(data));
+
+        // Añadir las capas al mapa
+        poiLayer.addTo(map);
+        hikingRoutesLayer.addTo(map);
+        hotelsLayer.addTo(map);
+        restaurantsLayer.addTo(map);
+        transportLayer.addTo(map);
+
+        // Añadir control de capas
+        L.control.layers(null, {
+            'Puntos de Interés': poiLayer,
+            'Rutas de Senderismo': hikingRoutesLayer,
+            'Hoteles': hotelsLayer,
+            'Restaurantes': restaurantsLayer,
+            'Transporte Público': transportLayer
+        }).addTo(map);
+    </script>
+</body>
+</html>
